@@ -23,7 +23,8 @@
   --amber-light: #FAEEDA;
   --coral: #993C1D;
   --coral-light: #FAECE7;
-
+  --purple: #3C3489;
+  --purple-light: #CECBF6;
   --phase1: #E1F5EE; --phase1t: #085041;
   --phase2: #FAEEDA; --phase2t: #633806;
   --phase3: #F5C4B3; --phase3t: #712B13;
@@ -41,9 +42,9 @@ body {
   font-weight: 300;
 }
 
-/* ── HEADER ── */
+/* HEADER */
 header {
-  padding: 40px 48px 32px;
+  padding: 32px 48px 24px;
   border-bottom: 1px solid var(--border);
   background: var(--surface);
   display: flex;
@@ -52,7 +53,6 @@ header {
   gap: 24px;
   flex-wrap: wrap;
 }
-.header-left {}
 .header-logo {
   font-family: 'Noto Serif TC', serif;
   font-size: 11px;
@@ -64,7 +64,7 @@ header {
 }
 .header-title {
   font-family: 'Noto Serif TC', serif;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 600;
   line-height: 1.25;
   color: var(--text);
@@ -76,9 +76,7 @@ header {
   font-weight: 300;
   line-height: 1.6;
 }
-.header-meta {
-  text-align: right;
-}
+.header-meta { text-align: right; }
 .meta-date {
   font-size: 11px;
   color: var(--text3);
@@ -102,22 +100,23 @@ header {
   background: var(--amber);
 }
 
-/* ── LEGEND ── */
+/* LEGEND */
 .legend-bar {
-  padding: 14px 48px;
+  padding: 12px 48px;
   background: var(--surface);
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
   flex-wrap: wrap;
 }
+.legend-group { display: flex; align-items: center; gap: 16px; }
 .legend-label {
   font-size: 11px;
   font-weight: 500;
   color: var(--text3);
   letter-spacing: 0.06em;
-  margin-right: 4px;
+  margin-right: 2px;
 }
 .legend-item {
   display: flex;
@@ -126,119 +125,69 @@ header {
   font-size: 12px;
   color: var(--text2);
 }
-.ldot {
-  width: 9px; height: 9px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
+.ldot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
 .ldot-core { background: var(--accent); }
 .ldot-maybe { background: var(--amber); }
 .ldot-open { background: #ccc; border: 1px solid #aaa; }
 .legend-sep { width: 1px; height: 16px; background: var(--border-strong); }
+.legend-card-tag {
+  font-size: 10px; font-weight: 500; padding: 2px 8px;
+  border-radius: 10px; letter-spacing: 0.04em;
+}
+.tag-display { background: var(--purple-light); color: var(--purple); }
+.tag-discuss { background: var(--accent-light); color: #085041; }
+.legend-card-desc { font-size: 11px; color: var(--text2); }
 
-/* ── MAIN LAYOUT ── */
+/* MAIN */
 .main {
   display: flex;
-  height: calc(100vh - 160px);
-  min-height: 600px;
+  height: calc(100vh - 148px);
+  min-height: 560px;
 }
 
-/* ── MATRIX PANEL ── */
+/* MATRIX */
 .matrix-panel {
   flex: 1;
   overflow: auto;
-  padding: 32px 24px 32px 48px;
+  padding: 28px 20px 28px 48px;
 }
+.matrix-wrap { min-width: 700px; }
+.matrix-table { border-collapse: collapse; width: 100%; }
 
-.matrix-wrap {
-  min-width: 700px;
-}
-
-.matrix-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-/* Phase headers */
-.ph-corner {
-  width: 160px;
-  padding: 0;
-  vertical-align: bottom;
-}
+.ph-corner { width: 160px; padding: 0; vertical-align: bottom; }
 .ph-corner-inner {
   padding: 10px 14px 12px;
-  font-size: 10px;
-  font-weight: 500;
+  font-size: 10px; font-weight: 500;
   letter-spacing: 0.08em;
   color: var(--text3);
   text-align: right;
   border-right: 1.5px solid var(--border-strong);
   border-bottom: 1.5px solid var(--border-strong);
 }
-
 .ph-cell {
-  padding: 0;
-  width: 140px;
-  text-align: center;
-  vertical-align: bottom;
+  padding: 0; width: 140px;
+  text-align: center; vertical-align: bottom;
   border-left: 1px solid var(--border);
 }
 .ph-cell-inner {
   padding: 14px 10px 12px;
   border-bottom: 1.5px solid var(--border-strong);
 }
-.ph-num {
-  font-size: 10px;
-  color: var(--text3);
-  letter-spacing: 0.06em;
-  margin-bottom: 4px;
-  font-weight: 300;
-}
-.ph-name {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text);
-  margin-bottom: 5px;
-  line-height: 1.3;
-}
-.ph-badge {
-  display: inline-block;
-  font-size: 10px;
-  padding: 2px 7px;
-  border-radius: 10px;
-  font-weight: 400;
-}
+.ph-num { font-size: 10px; color: var(--text3); letter-spacing: 0.06em; margin-bottom: 4px; font-weight: 300; }
+.ph-name { font-family: 'Noto Serif TC', serif; font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 5px; line-height: 1.3; }
+.ph-badge { display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 10px; font-weight: 400; }
 
-/* Row label */
 .row-label-cell {
-  padding: 0;
-  vertical-align: middle;
+  padding: 0; vertical-align: middle;
   border-right: 1.5px solid var(--border-strong);
   border-top: 1px solid var(--border);
 }
-.row-label-inner {
-  padding: 14px 14px;
-}
-.row-name {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text);
-  margin-bottom: 4px;
-  line-height: 1.35;
-}
-.row-sub {
-  font-size: 10px;
-  color: var(--text3);
-  line-height: 1.5;
-  font-weight: 300;
-}
+.row-label-inner { padding: 14px; }
+.row-name { font-family: 'Noto Serif TC', serif; font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 4px; line-height: 1.35; }
+.row-sub { font-size: 10px; color: var(--text3); line-height: 1.5; font-weight: 300; }
 
-/* Matrix cell */
 .m-cell {
-  padding: 10px 12px;
-  vertical-align: top;
+  padding: 10px 12px; vertical-align: top;
   border-top: 1px solid var(--border);
   border-left: 1px solid var(--border);
   cursor: pointer;
@@ -247,40 +196,18 @@ header {
 }
 .m-cell:hover { background: var(--surface); }
 .m-cell.active { background: var(--surface); outline: 2px solid var(--accent); outline-offset: -2px; }
-
 .m-cell-inner { display: flex; flex-direction: column; gap: 5px; min-height: 60px; }
-.m-sig {
-  display: flex; align-items: flex-start; gap: 6px;
-}
-.sig-dot {
-  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 2px;
-}
+.m-sig { display: flex; align-items: flex-start; gap: 6px; }
+.sig-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 2px; }
 .sig-core { background: var(--accent); }
 .sig-maybe { background: var(--amber); }
-.sig-open { background: #ccc; border: 1px solid #aaa; }
-.m-title {
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--text);
-  line-height: 1.4;
-}
-.m-note {
-  font-size: 10px;
-  color: var(--text2);
-  line-height: 1.4;
-  font-weight: 300;
-}
-.m-open-tag {
-  font-size: 10px;
-  color: var(--text3);
-  font-style: italic;
-  line-height: 1.5;
-  padding-top: 4px;
-}
+.m-title { font-size: 11px; font-weight: 500; color: var(--text); line-height: 1.4; }
+.m-note { font-size: 10px; color: var(--text2); line-height: 1.4; font-weight: 300; }
+.m-open-tag { font-size: 10px; color: var(--text3); font-style: italic; line-height: 1.5; padding-top: 4px; }
 
-/* ── DETAIL PANEL ── */
+/* DETAIL PANEL */
 .detail-panel {
-  width: 340px;
+  width: 360px;
   flex-shrink: 0;
   border-left: 1px solid var(--border-strong);
   background: var(--surface);
@@ -288,6 +215,7 @@ header {
   display: flex;
   flex-direction: column;
 }
+
 .detail-empty {
   flex: 1;
   display: flex;
@@ -298,110 +226,179 @@ header {
   text-align: center;
 }
 .detail-empty-icon {
-  font-size: 32px;
-  color: var(--border-strong);
-  margin-bottom: 14px;
-  font-family: serif;
+  font-size: 32px; color: var(--border-strong);
+  margin-bottom: 14px; font-family: serif;
 }
-.detail-empty-text {
-  font-size: 13px;
-  color: var(--text3);
-  line-height: 1.7;
-  font-weight: 300;
-}
-.detail-content { display: none; flex-direction: column; height: 100%; }
-.detail-content.visible { display: flex; }
+.detail-empty-text { font-size: 13px; color: var(--text3); line-height: 1.7; font-weight: 300; }
 
-.detail-header {
-  padding: 24px 28px 20px;
+/* card mode toggle */
+.card-mode-bar {
+  display: none;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.card-mode-bar.visible { display: flex; }
+.mode-label-txt { font-size: 11px; color: var(--text3); margin-right: 4px; }
+.mode-btn {
+  font-size: 11px; padding: 5px 12px; cursor: pointer;
+  border-radius: 16px;
+  border: 1px solid var(--border-strong);
+  background: transparent; color: var(--text2);
+  transition: all 0.15s;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+.mode-btn.active-display {
+  background: var(--purple-light); color: var(--purple);
+  border-color: var(--purple-light);
+}
+.mode-btn.active-discuss {
+  background: var(--accent-light); color: #085041;
+  border-color: var(--accent-light);
+}
+
+/* shared card top */
+.d-card-top {
+  display: none;
+  padding: 20px 22px 16px;
   border-bottom: 1px solid var(--border);
 }
-.detail-tags {
-  display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px;
-}
+.d-card-top.visible { display: block; }
+.d-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
 .d-phase-tag {
   font-size: 10px; font-weight: 500;
-  padding: 3px 8px; border-radius: 10px;
+  padding: 2px 8px; border-radius: 10px;
   letter-spacing: 0.04em;
 }
 .d-func-tag {
-  font-size: 10px;
-  padding: 3px 8px; border-radius: 10px;
-  background: var(--surface2);
-  color: var(--text2);
+  font-size: 10px; padding: 2px 8px; border-radius: 10px;
+  background: var(--surface2); color: var(--text2);
+}
+.d-mode-badge {
+  font-size: 10px; font-weight: 500;
+  padding: 2px 8px; border-radius: 10px;
+  margin-left: auto;
 }
 .d-title {
   font-family: 'Noto Serif TC', serif;
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text);
-  line-height: 1.35;
-  margin-bottom: 8px;
+  font-size: 18px; font-weight: 600;
+  color: var(--text); line-height: 1.3; margin-bottom: 5px;
 }
-.d-body {
-  font-size: 13px;
-  color: var(--text2);
-  line-height: 1.75;
-  font-weight: 300;
-}
+.d-subtitle { font-size: 12px; color: var(--text2); font-style: italic; line-height: 1.5; }
 
-.detail-sections {
-  padding: 20px 28px;
+/* display card body */
+.d-display-body {
+  display: none;
+  padding: 16px 22px;
+  flex-direction: column; gap: 14px;
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
 }
-.d-section-label {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  color: var(--text3);
-  margin-bottom: 8px;
+.d-display-body.visible { display: flex; }
+.sec-lbl {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.09em; color: var(--text3);
+  margin-bottom: 6px;
 }
-.d-block {
+.d-field {
   background: var(--surface2);
+  border-radius: 8px; padding: 10px 13px;
+}
+.d-field-lbl {
+  font-size: 10px; font-weight: 500;
+  color: var(--text3); letter-spacing: 0.05em; margin-bottom: 4px;
+}
+.d-field-txt { font-size: 12px; color: var(--text); line-height: 1.6; }
+.d-field-empty {
+  font-size: 12px; color: var(--text3);
+  font-style: italic; line-height: 1.55;
+  border: 1px dashed var(--border-strong);
+  border-radius: 8px; padding: 10px 13px;
+}
+.d-ph-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.d-ph-slot {
   border-radius: 8px;
-  padding: 12px 14px;
+  border: 1px dashed var(--border-strong);
+  padding: 10px 12px;
 }
-.d-block-label {
-  font-size: 10px;
-  font-weight: 500;
-  color: var(--text3);
-  letter-spacing: 0.06em;
-  margin-bottom: 5px;
-}
-.d-block-text {
-  font-size: 12px;
-  color: var(--text);
-  line-height: 1.6;
-  font-weight: 300;
-}
-.d-status-row {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 11px; color: var(--text2);
-}
-.d-status-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.d-ph-lbl { font-size: 10px; color: var(--text3); letter-spacing: 0.05em; margin-bottom: 6px; }
+.d-ph-dash { height: 7px; border-radius: 4px; background: var(--border); margin-bottom: 5px; }
 
-.detail-footer {
-  padding: 16px 28px;
+/* discuss card body */
+.d-discuss-body {
+  display: none;
+  padding: 16px 22px;
+  flex-direction: column; gap: 14px;
+  flex: 1;
+}
+.d-discuss-body.visible { display: flex; }
+.d-scenario {
+  background: var(--surface2);
+  border-left: 3px solid #F0997B;
+  padding: 11px 13px;
+  font-size: 13px; color: var(--text); line-height: 1.65;
+}
+.d-scenario-note { font-size: 11px; color: var(--text2); margin-top: 6px; font-style: italic; line-height: 1.5; }
+.d-qlist { display: flex; flex-direction: column; gap: 7px; }
+.d-qrow { display: flex; gap: 8px; align-items: flex-start; }
+.d-qnum {
+  font-size: 10px; font-weight: 500;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: #F5C4B3; color: #712B13;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.d-qtxt { font-size: 12px; color: var(--text); line-height: 1.55; }
+.d-qsub { font-size: 11px; color: var(--text2); margin-top: 3px; line-height: 1.4; }
+.d-steps { display: flex; flex-direction: column; }
+.d-step {
+  display: flex; gap: 10px; align-items: flex-start;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+.d-step:last-child { border-bottom: none; }
+.d-step-num {
+  font-size: 10px; font-weight: 500;
+  padding: 2px 6px; border-radius: 4px;
+  background: var(--accent-light); color: #085041;
+  flex-shrink: 0; white-space: nowrap; margin-top: 1px;
+}
+.d-step-title { font-size: 12px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
+.d-step-desc { font-size: 11px; color: var(--text2); line-height: 1.5; }
+.d-tool-tag {
+  display: inline-block; margin-top: 4px;
+  font-size: 10px; padding: 2px 7px; border-radius: 4px;
+  background: var(--surface2);
+  border: 1px solid var(--border-strong);
+  color: var(--text3);
+}
+
+/* shared footer */
+.d-card-footer {
+  display: none;
+  padding: 12px 22px;
   border-top: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  align-items: center; justify-content: space-between;
 }
-.d-note {
-  font-size: 11px;
-  color: var(--text3);
-  font-weight: 300;
-  line-height: 1.55;
-  border-left: 2px solid var(--border-strong);
-  padding-left: 10px;
+.d-card-footer.visible { display: flex; }
+.d-footer-note { font-size: 10px; color: var(--text3); font-style: italic; }
+.d-footer-badge {
+  font-size: 10px; padding: 2px 8px; border-radius: 10px; font-weight: 500;
 }
+.d-status-row { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--text2); }
+.d-sdot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 
-/* ── FOOTER ── */
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateX(8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.d-display-body.visible,
+.d-discuss-body.visible { animation: fadeSlide 0.2s ease; }
+
+/* FOOTER */
 footer {
-  padding: 14px 48px;
+  padding: 12px 48px;
   border-top: 1px solid var(--border);
   background: var(--surface);
   display: flex;
@@ -411,24 +408,16 @@ footer {
   color: var(--text3);
   font-weight: 300;
 }
-.footer-right {
-  display: flex; gap: 20px; align-items: center;
-}
-
-/* ── ANIMATIONS ── */
-@keyframes fadeSlide {
-  from { opacity: 0; transform: translateX(10px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-.detail-content.visible { animation: fadeSlide 0.22s ease; }
+.footer-right { display: flex; gap: 20px; align-items: center; }
 
 @media (max-width: 900px) {
-  header { padding: 24px 20px 20px; }
-  .legend-bar { padding: 12px 20px; }
+  header { padding: 20px; }
+  .legend-bar { padding: 10px 20px; }
   .main { flex-direction: column; height: auto; }
   .matrix-panel { padding: 20px; }
-  .detail-panel { width: 100%; border-left: none; border-top: 1px solid var(--border-strong); min-height: 300px; }
+  .detail-panel { width: 100%; border-left: none; border-top: 1px solid var(--border-strong); min-height: 320px; }
   .matrix-wrap { min-width: 560px; }
+  footer { padding: 12px 20px; }
 }
 </style>
 </head>
@@ -447,12 +436,24 @@ footer {
 </header>
 
 <div class="legend-bar">
-  <span class="legend-label">格子說明</span>
-  <div class="legend-item"><div class="ldot ldot-core"></div>核心對應 — 現有方案可直接回應</div>
+  <div class="legend-group">
+    <span class="legend-label">對應狀態</span>
+    <div class="legend-item"><div class="ldot ldot-core"></div>核心對應</div>
+    <div class="legend-item"><div class="ldot ldot-maybe"></div>潛在機會</div>
+    <div class="legend-item"><div class="ldot ldot-open"></div>待填入</div>
+  </div>
   <div class="legend-sep"></div>
-  <div class="legend-item"><div class="ldot ldot-maybe"></div>潛在機會 — 需研發或訪談確認</div>
-  <div class="legend-sep"></div>
-  <div class="legend-item"><div class="ldot ldot-open"></div>待填入 — 需客戶 input 補充</div>
+  <div class="legend-group">
+    <span class="legend-label">牌卡類型</span>
+    <div class="legend-item">
+      <span class="legend-card-tag tag-display">展示版</span>
+      <span class="legend-card-desc">技術方案 a–g 欄位，給客戶看</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-card-tag tag-discuss">討論版</span>
+      <span class="legend-card-desc">工作坊引導，挖掘 a–g 內容</span>
+    </div>
+  </div>
 </div>
 
 <div class="main">
@@ -462,41 +463,31 @@ footer {
         <thead>
           <tr>
             <th class="ph-corner"><div class="ph-corner-inner">功能 ↓ &nbsp; 情境 →</div></th>
-            <th class="ph-cell">
-              <div class="ph-cell-inner">
-                <div class="ph-num">階段 01</div>
-                <div class="ph-name">備災期</div>
-                <div class="ph-badge" style="background:var(--phase1);color:var(--phase1t)">平時 → 災前 24h</div>
-              </div>
-            </th>
-            <th class="ph-cell">
-              <div class="ph-cell-inner">
-                <div class="ph-num">階段 02</div>
-                <div class="ph-name">黃金 72 小時</div>
-                <div class="ph-badge" style="background:var(--phase2);color:var(--phase2t)">災後 0 → 72h</div>
-              </div>
-            </th>
-            <th class="ph-cell">
-              <div class="ph-cell-inner">
-                <div class="ph-num">階段 03</div>
-                <div class="ph-name">過渡安置期</div>
-                <div class="ph-badge" style="background:var(--phase3);color:var(--phase3t)">災後 3 → 30 天</div>
-              </div>
-            </th>
-            <th class="ph-cell">
-              <div class="ph-cell-inner">
-                <div class="ph-num">階段 04</div>
-                <div class="ph-name">復原期</div>
-                <div class="ph-badge" style="background:var(--phase4);color:var(--phase4t)">災後 1 → 6 月</div>
-              </div>
-            </th>
-            <th class="ph-cell">
-              <div class="ph-cell-inner">
-                <div class="ph-num">階段 05</div>
-                <div class="ph-name">回收循環</div>
-                <div class="ph-badge" style="background:var(--phase5);color:var(--phase5t)">災後重建</div>
-              </div>
-            </th>
+            <th class="ph-cell"><div class="ph-cell-inner">
+              <div class="ph-num">階段 01</div>
+              <div class="ph-name">備災期</div>
+              <div class="ph-badge" style="background:var(--phase1);color:var(--phase1t)">平時 → 災前 24h</div>
+            </div></th>
+            <th class="ph-cell"><div class="ph-cell-inner">
+              <div class="ph-num">階段 02</div>
+              <div class="ph-name">黃金 72 小時</div>
+              <div class="ph-badge" style="background:var(--phase2);color:var(--phase2t)">災後 0 → 72h</div>
+            </div></th>
+            <th class="ph-cell"><div class="ph-cell-inner">
+              <div class="ph-num">階段 03</div>
+              <div class="ph-name">過渡安置期</div>
+              <div class="ph-badge" style="background:var(--phase3);color:var(--phase3t)">災後 3 → 30 天</div>
+            </div></th>
+            <th class="ph-cell"><div class="ph-cell-inner">
+              <div class="ph-num">階段 04</div>
+              <div class="ph-name">復原期</div>
+              <div class="ph-badge" style="background:var(--phase4);color:var(--phase4t)">災後 1 → 6 月</div>
+            </div></th>
+            <th class="ph-cell"><div class="ph-cell-inner">
+              <div class="ph-num">階段 05</div>
+              <div class="ph-name">回收循環</div>
+              <div class="ph-badge" style="background:var(--phase5);color:var(--phase5t)">災後重建</div>
+            </div></th>
           </tr>
         </thead>
         <tbody id="matrix-body"></tbody>
@@ -505,34 +496,93 @@ footer {
   </div>
 
   <div class="detail-panel" id="detail-panel">
+
     <div class="detail-empty" id="detail-empty">
       <div class="detail-empty-icon">矩</div>
-      <div class="detail-empty-text">點擊任一格<br>查看情境說明與<br>訪談討論起點</div>
+      <div class="detail-empty-text">點擊任一格<br>切換展示版或討論版牌卡</div>
     </div>
-    <div class="detail-content" id="detail-content">
-      <div class="detail-header">
-        <div class="detail-tags" id="d-tags"></div>
-        <div class="d-title" id="d-title"></div>
-        <div class="d-body" id="d-body"></div>
+
+    <!-- mode toggle bar -->
+    <div class="card-mode-bar" id="mode-bar">
+      <span class="mode-label-txt">牌卡類型</span>
+      <button class="mode-btn" id="btn-display" onclick="switchMode('display')">展示版</button>
+      <button class="mode-btn" id="btn-discuss" onclick="switchMode('discuss')">討論版</button>
+    </div>
+
+    <!-- shared top -->
+    <div class="d-card-top" id="d-card-top">
+      <div class="d-tags" id="d-tags"></div>
+      <div class="d-title" id="d-title"></div>
+      <div class="d-subtitle" id="d-subtitle"></div>
+    </div>
+
+    <!-- DISPLAY body -->
+    <div class="d-display-body" id="d-display-body">
+      <div>
+        <div class="sec-lbl">a · 情境與問題描述</div>
+        <div class="d-field"><div class="d-field-lbl">防災階段</div><div class="d-field-txt" id="dd-a"></div></div>
       </div>
-      <div class="detail-sections">
-        <div>
-          <div class="d-section-label">訪談問題</div>
-          <div class="d-block"><div class="d-block-label">問題</div><div class="d-block-text" id="d-q1"></div></div>
+      <div>
+        <div class="sec-lbl">b · 方案名稱</div>
+        <div class="d-field-empty" id="dd-b">待富迪確認方案名稱</div>
+      </div>
+      <div>
+        <div class="sec-lbl">c · 客戶現況與挑戰</div>
+        <div class="d-field"><div class="d-field-lbl">現況問題</div><div class="d-field-txt" id="dd-c"></div></div>
+      </div>
+      <div>
+        <div class="sec-lbl">d · 關鍵技術特性</div>
+        <div class="d-field-empty" id="dd-d"></div>
+      </div>
+      <div>
+        <div class="sec-lbl">e · 差異化亮點與 ESG</div>
+        <div class="d-field"><div class="d-field-lbl">差異化主張（架構假設）</div><div class="d-field-txt" id="dd-e"></div></div>
+      </div>
+      <div class="d-ph-row">
+        <div class="d-ph-slot">
+          <div class="d-ph-lbl">f · 獲獎 / 認證</div>
+          <div class="d-ph-dash" style="width:80%"></div>
+          <div class="d-ph-dash" style="width:55%"></div>
         </div>
-        <div>
-          <div class="d-section-label">研發討論起點</div>
-          <div class="d-block"><div class="d-block-label">方向</div><div class="d-block-text" id="d-q2"></div></div>
+        <div class="d-ph-slot">
+          <div class="d-ph-lbl">g · 真實案例</div>
+          <div class="d-ph-dash" style="width:70%"></div>
+          <div class="d-ph-dash" style="width:45%"></div>
         </div>
+      </div>
+    </div>
+
+    <!-- DISCUSS body -->
+    <div class="d-discuss-body" id="d-discuss-body">
+      <div>
+        <div class="sec-lbl">情境錨定</div>
+        <div class="d-scenario" id="dq-scenario">
+          <span id="dq-scene"></span>
+          <div class="d-scenario-note" id="dq-note"></div>
+        </div>
+      </div>
+      <div>
+        <div class="sec-lbl">核心討論問題</div>
+        <div class="d-qlist" id="dq-qlist"></div>
+      </div>
+      <div>
+        <div class="sec-lbl">引導步驟</div>
+        <div class="d-steps" id="dq-steps"></div>
+      </div>
+    </div>
+
+    <!-- shared footer -->
+    <div class="d-card-footer" id="d-card-footer">
+      <div>
         <div class="d-status-row">
-          <div class="d-status-dot" id="d-sdot"></div>
-          <span id="d-slabel"></span>
+          <div class="d-sdot" id="d-sdot"></div>
+          <span id="d-slabel" style="font-size:11px;color:var(--text2)"></span>
         </div>
+        <div class="d-footer-note" id="d-footer-note" style="margin-top:4px"></div>
       </div>
-      <div class="detail-footer">
-        <div class="d-note" id="d-note"></div>
-      </div>
+      <div class="d-footer-badge" id="d-footer-badge"></div>
     </div>
+
   </div>
 </div>
 
@@ -560,24 +610,59 @@ const rows = [
     cells:[
       { status:'core', title:'長期倉儲堆疊', note:'多層抗壓幾何設計',
         body:'備災物資需長時間堆疊儲存。富迪紙構的幾何邊框設計可提供高抗壓結構，支撐多層堆疊而不變形。',
-        q1:'倉儲標準抗壓值？堆高層數需求？', q2:'現有堆疊方案 vs 富迪紙構的成本比較',
-        note:'確認政府或NGO備災倉儲的標準規格，作為設計基準。' },
+        q1:'倉儲標準抗壓值？堆高層數需求？', q2:'現有堆疊方案 vs 富迪紙構的成本比較', hint:'確認政府或NGO備災倉儲的標準規格，作為設計基準。',
+        scene:'備災物資儲存在倉庫，可能長達數年。包裝的結構完整性，決定了物資到達災民手上時是否仍然完好。',
+        sceneNote:'核心問題：幾何結構設計如何做到長期高抗壓又維持輕量？',
+        qs:['富迪目前最高可支撐的堆疊層數與抗壓值是多少？有測試數據嗎？','現行政府備災採購規格中，對包裝的結構強度有哪些具體要求？','幾何邊框設計是否有可以公開展示的實物或案例？'],
+        steps:[{t:'5m',n:'錨定情境',d:'主持人說明備災倉儲的實際場景，邀請業務端分享客戶倉儲現況。',tool:'口述'},{t:'8m',n:'現況盤點',d:'便利貼：客戶目前用什麼材料做堆疊保護？痛點是什麼？',tool:'便利貼'},{t:'10m',n:'技術對應',d:'技術端說明富迪幾何邊框設計的抗壓原理，與現有材料比較。',tool:'白板討論'},{t:'7m',n:'數據缺口',d:'確認哪些測試數據尚未建立，誰負責補充？',tool:'行動記錄'}],
+        dd_a:'備災物資需在各種倉儲環境中長期保存，包裝須承受長時間多層堆疊的垂直壓力，不能因結構疲勞導致內容物損壞。',
+        dd_c:'傳統塑料和木箱可承受高壓，但重量大、體積固定、回收困難。輕量紙材的抗壓性能一直被視為天花板限制。',
+        dd_d:'待填入：富迪幾何邊框紙構的抗壓數據、堆疊層數實測結果、與同等塑料方案的性能對比。',
+        dd_e:'輕量高抗壓結構設計，同等保護效能下大幅降低運輸重量與倉儲空間；使用後可平整壓縮進入回收流程，回應政府採購的 ESG 要求。' },
       { status:'core', title:'緊急搬運防撞', note:'幾何緩衝吸收衝擊',
         body:'物資在災後交通混亂環境中快速搬運，需要高耐撞包裝。紙漿模塑的幾何緩衝結構可吸收不規則衝擊力。',
-        q1:'典型運輸情境為何？落下高度標準？', q2:'對比 EPE 泡棉的緩衝效能數據',
-        note:'這是富迪紙漿模塑最核心的技術競爭力展示點。' },
+        q1:'典型運輸情境為何？落下高度標準？', q2:'對比 EPE 泡棉的緩衝效能數據', hint:'這是富迪紙漿模塑最核心的技術競爭力展示點。',
+        scene:'災後 72 小時內，物資在混亂環境快速傳遞：被拋、被丟、被推入卡車。包裝必須在非正常操作下保護內容物。',
+        sceneNote:'這是紙漿模塑最能展現技術實力的場景。幾何設計不只是美觀，而是物理緩衝機制。',
+        qs:['富迪紙漿模塑的標準落下測試高度和通過率是多少？','幾何邊框設計的緩衝原理是什麼？和 EPE 泡棉的機制有何不同？','目前是否有針對不規則外力（非垂直落下）的測試數據？'],
+        steps:[{t:'5m',n:'情境模擬',d:'請參與者描述他們見過最粗暴的物資搬運場景，建立共鳴。',tool:'口述'},{t:'10m',n:'技術機制',d:'技術端解說幾何緩衝原理，對比 EPE 泡棉的材料機制。',tool:'白板圖解'},{t:'8m',n:'測試標準',d:'目前有哪些測試數據？還缺哪些？哪個是最關鍵的佐證？',tool:'數據清單'},{t:'7m',n:'行動規劃',d:'確認補充哪些測試報告，可以作為客戶提案的技術佐證。',tool:'行動記錄'}],
+        dd_a:'黃金 72 小時內物資在極度混亂的環境中快速搬運，包裝承受拋擲、堆壓、撞擊等非正常操作，防撞保護是最關鍵的功能需求。',
+        dd_c:'EPE 泡棉和 EPS 保麗龍雖有良好緩衝效果，但體積大、不可壓縮、難以回收，災後產生大量廢棄物，與人道援助的永續承諾矛盾。',
+        dd_d:'待填入：紙漿模塑幾何緩衝結構的落下測試數據、衝擊吸收率、與 EPE 泡棉的性能比較報告。',
+        dd_e:'幾何邊框設計可精準吸收特定方向衝擊力，同時比 EPE 輕量；使用後可直接進入紙纖維回收流程，無需分類，降低災後廢棄物處理負擔。' },
       { status:'maybe', title:'模組化收納', note:'折疊堆疊待確認',
         body:'安置場所空間有限，包裝需具備模組化收納功能。富迪是否有可堆疊、可折疊的設計？需確認。',
-        q1:'安置空間的標準尺寸為何？', q2:'富迪是否有模組化折疊方案的研發計畫？',
-        note:'此格為假設，需技術端說明現有方案的可延伸性。' },
+        q1:'安置空間的標準尺寸為何？', q2:'富迪是否有模組化折疊方案的研發計畫？', hint:'此格為假設，需技術端說明現有方案的可延伸性。',
+        scene:'臨時安置場所空間極度有限，物資包裝在開封後還需繼續使用（如收納、隔間、置物）。空間效率是設計的核心限制。',
+        sceneNote:'這個需求介於「包裝」和「家具」之間，是一個值得深入討論的設計邊界。',
+        qs:['富迪目前的產品線中，是否有主動設計「開封後仍可使用」的形態？','安置場所的空間規格（每人/每戶面積）是否有參考標準？','模組化設計是否會影響原有的保護結構強度？'],
+        steps:[{t:'5m',n:'情境確立',d:'讓業務端描述客戶在安置場所的實際使用困境。',tool:'口述'},{t:'10m',n:'形態發散',d:'每人畫出一個「開封後繼續使用」的包裝形態草圖。',tool:'草圖討論'},{t:'10m',n:'技術評估',d:'技術端判斷哪些形態在現有製程中可行，哪些需要額外研發。',tool:'可行性評估'},{t:'5m',n:'優先排序',d:'點點貼投票選出最值得深化的方向。',tool:'點點貼'}],
+        dd_a:'過渡安置期空間極度有限，物資包裝在開封後不應立即成為廢棄負擔，而應具備二次使用潛力（收納、隔間、置物台）。',
+        dd_c:'現有包裝在開封後立即失去功能，在空間有限的安置場所造成雜亂，且需要額外的廢棄物收集工作，增加管理負擔。',
+        dd_d:'待填入：富迪是否有可折疊或可重組的紙構設計？現有製程對模組化形態的支援程度如何？',
+        dd_e:'若可行，這是「包裝即家具」概念的實踐——一個設計決策同時解決了物資保護、空間利用和廢棄物管理三個問題，是強力的 ESG 敘事素材。' },
       { status:'maybe', title:'修繕物資運輸', note:'中量級保護待開發',
         body:'復原期大量建材與修繕物資進入，需要中量級的保護包裝。紙構是否適用非精密物資的運輸保護？',
-        q1:'重量與尺寸範圍？', q2:'探索「工業級保護 + 易回收」的差異化定位',
-        note:'可能是從防災情境延伸到一般工業包裝的切入點。' },
+        q1:'重量與尺寸範圍？', q2:'探索「工業級保護 + 易回收」的差異化定位', hint:'可能是從防災情境延伸到一般工業包裝的切入點。',
+        scene:'復原期開始大量採購建材、工具、家電進行修繕。這些物資的包裝需求介於精密品和散裝貨之間，是一個龐大但尚未被永續方案覆蓋的市場。',
+        sceneNote:'這個場景是從防災情境延伸到一般工業包裝市場的可能切入點。',
+        qs:['富迪目前的技術適用的重量和尺寸上限是什麼？','「中量級工業包裝」目前的市場主流解決方案是什麼？富迪有競爭力嗎？','進入這個市場需要哪些額外認證或標準？'],
+        steps:[{t:'5m',n:'市場定義',d:'確認「中量級工業包裝」的邊界：什麼樣的物資算在這個範疇？',tool:'白板分類'},{t:'10m',n:'技術適用性',d:'技術端評估現有製程對這類需求的覆蓋範圍和技術缺口。',tool:'技術評估'},{t:'10m',n:'市場機會',d:'業務端分析這個市場目前的採購決策邏輯，永續因素的權重有多高？',tool:'業務討論'},{t:'5m',n:'決策',d:'這個方向是否值得列入下一階段研發計畫？',tool:'決策記錄'}],
+        dd_a:'復原期大量建材與工具進入災區，其運輸包裝需要承受一定結構壓力，但需求等級低於精密設備，是富迪紙構技術可能延伸的新市場。',
+        dd_c:'目前中量級工業包裝以木箱、PE 打包帶為主，永續替代方案市場幾乎空白。採購決策者開始關注 ESG 但缺乏可靠的替代選項。',
+        dd_d:'待填入：富迪紙構在中量級工業包裝的技術規格、重量/尺寸承載上限、與木箱方案的成本比較。',
+        dd_e:'定位為「工業強度、易回收設計」的差異化主張，切入現有永續方案幾乎空白的市場，同時為採購方提供 ESG 報告所需的碳足跡數據。' },
       { status:'open', title:'回收後結構再利用', note:'可行性待評估',
         body:'使用後的紙構包裝如何被再次利用為結構材料？此點需富迪技術端說明回收後的材料強度是否仍具結構功能。',
-        q1:'回收後纖維的強度保留率？', q2:'循環再製為建材或隔板的可行性',
-        note:'若可行，這是富迪循環主張最有力的實證案例。' },
+        q1:'回收後纖維的強度保留率？', q2:'循環再製為建材或隔板的可行性', hint:'若可行，這是富迪循環主張最有力的實證案例。',
+        scene:'大規模災後產生大量使用過的包裝廢棄物。若這些材料能在當地被再製為建材或隔板，既解決廢棄物問題，又支援重建，是閉環循環的最理想實踐。',
+        sceneNote:'這個交叉點是整個矩陣最具雄心的格子——它的可行性目前尚不確定，但若能實現，是富迪永續主張的最高點。',
+        qs:['富迪的紙纖維在回收後，強度保留率大約是多少？能否再製為具結構功能的材料？','目前是否有任何將廢棄紙包裝再製為建材的實際案例或研究？','在災後環境中，就地回收再製的可行性（設備、人力、成本）如何評估？'],
+        steps:[{t:'5m',n:'概念確立',d:'先確認這個方向是「技術上可能」還是「目前技術尚不支援」。',tool:'技術端表態'},{t:'10m',n:'可行性評估',d:'如果可行：需要什麼條件？如果不可行：哪個環節是瓶頸？',tool:'白板討論'},{t:'10m',n:'替代方案',d:'若就地再製不可行，最接近的替代方向是什麼？（集中回收？送廠再製？）',tool:'方案發散'},{t:'5m',n:'研發優先級',d:'這個方向是否值得納入長期研發路線圖？',tool:'優先級投票'}],
+        dd_a:'回收循環階段的終極目標：災後包裝廢棄物在當地再製為建材或隔板，直接支援災區重建，實現從防災到重建的完整閉環。',
+        dd_c:'目前幾乎所有包裝材料在使用後都進入廢棄物流程，不具備在地再製能力。即使是可回收材料，也需要送回工廠處理，在災後環境中幾乎不可操作。',
+        dd_d:'待填入：紙纖維回收後的強度數據、再製為結構材料的技術可行性評估、就地再製所需的設備和條件。',
+        dd_e:'若可行，這是「零廢棄防災包裝系統」的核心主張——包裝材料在完成保護使命後，轉化為重建材料，形成完整的物質閉環。這是目前市場上沒有競爭者的定位。' },
     ]
   },
   {
@@ -586,24 +671,59 @@ const rows = [
     cells:[
       { status:'core', title:'長效防潮倉儲', note:'植物基塗層阻隔',
         body:'備災物資儲放於各種環境條件的倉庫，防潮是基本需求。富迪的植物基塗層技術可提供紙材防水阻隔功能，同時維持可回收性。',
-        q1:'倉儲濕度標準？儲存年限？', q2:'4evergreen 纖維回收率 90% 標準的符合程度',
-        note:'防潮塗層的技術參數需與國際標準對照，強化公信力。' },
+        q1:'倉儲濕度標準？儲存年限？', q2:'4evergreen 纖維回收率 90% 標準的符合程度', hint:'防潮塗層的技術參數需與國際標準對照，強化公信力。',
+        scene:'台灣倉儲環境濕度高，備災物資可能需要儲存 3～5 年以上。防潮塗層的長效性是關鍵，但傳統塗層往往犧牲回收性。',
+        sceneNote:'這是富迪植物基塗層最核心的應用場景，也是與國際標準接軌最直接的技術主張。',
+        qs:['富迪的植物基塗層在什麼樣的濕度環境下、可維持防潮功能多長時間？','塗層是否通過 4evergreen 的纖維親和技術標準，確保回收率達 90% 以上？','塗層技術是自有研發還是引進？可以公開到什麼程度？'],
+        steps:[{t:'5m',n:'情境確立',d:'描述台灣備災倉儲的典型濕度和溫度條件。',tool:'口述'},{t:'8m',n:'技術盤點',d:'技術端說明植物基塗層的防潮機制和現有測試數據。',tool:'技術說明'},{t:'10m',n:'標準對照',d:'對照 4evergreen 指南要求，富迪目前達到的程度？缺口在哪？',tool:'標準對照表'},{t:'7m',n:'認證規劃',d:'確認哪些認證是市場準入的必要條件，時程如何規劃？',tool:'行動記錄'}],
+        dd_a:'台灣及東南亞備災倉儲環境濕度高，物資儲存年限長達 3～5 年，防潮阻隔是紙材包裝取代塑料的最關鍵技術挑戰。',
+        dd_c:'現行塑料包裝的防潮性能穩定，但回收困難。現有的紙材防水方案（如 PE 塗層）雖有效，但喪失可回收性，與去塑主張矛盾。',
+        dd_d:'待填入：植物基塗層的防潮等級數據（WVTR 值）、測試環境條件、長效穩定性報告、4evergreen 纖維回收率符合程度。',
+        dd_e:'植物基塗層提供與 PE 同等的防潮性能，同時確保紙纖維在碎漿機中的回收率達 90% 以上，是目前業界最難兼顧的技術組合，也是富迪核心競爭壁壘。' },
       { status:'core', title:'戶外暴露防護', note:'極端環境阻隔挑戰',
         body:'災後現場暴露於雨水、泥濘、溫差等極端環境。紙材的阻隔技術是否能承受短期戶外暴露？這是核心技術挑戰。',
-        q1:'最嚴苛的環境測試條件？', q2:'對比傳統 PE 塗層的防護表現',
-        note:'這是去塑說服力最高的技術難關，需要測試數據佐證。' },
+        q1:'最嚴苛的環境測試條件？', q2:'對比傳統 PE 塗層的防護表現', hint:'這是去塑說服力最高的技術難關，需要測試數據佐證。',
+        scene:'黃金 72 小時內的救援現場：豪雨中的卸貨區、泥濘的發放點、高溫下的露天倉儲。包裝可能需要在戶外承受 12～48 小時的惡劣條件。',
+        sceneNote:'這是去塑方案最難說服採購方的場景。數據是唯一的說服工具。',
+        qs:['富迪的阻隔塗層可以承受多長時間的直接雨水暴露而不失效？','溫差（從低溫運輸到高溫現場）對塗層性能有何影響？','是否有針對泥濘、塵土等污染物的防護測試？'],
+        steps:[{t:'5m',n:'場景設定',d:'描述最嚴苛的戶外暴露場景，建立測試基準的共識。',tool:'情境討論'},{t:'10m',n:'現有數據',d:'技術端列出現有的環境測試數據，坦誠說明哪些條件已測試、哪些尚未。',tool:'數據盤點'},{t:'10m',n:'缺口分析',d:'最關鍵的缺口是什麼？如何補足？時程為何？',tool:'缺口矩陣'},{t:'5m',n:'行動規劃',d:'確認補充測試的優先順序和負責人。',tool:'行動記錄'}],
+        dd_a:'黃金 72 小時的救援現場是最極端的戶外環境：豪雨、高溫、泥濘同時出現。紙材包裝需要在這樣的條件下維持 12～48 小時的阻隔功能。',
+        dd_c:'這正是採購方對去塑方案最大的疑慮：「紙遇水就爛」的印象根深蒂固。缺乏戶外極端環境的測試數據，是目前最難說服採購方的環節。',
+        dd_d:'待填入：直接雨水暴露測試時長與通過率、溫差循環測試數據、IP 防護等級、與 PE 塗層方案的性能對比。',
+        dd_e:'若能提供戶外暴露 24 小時以上的測試通過數據，這是目前市場上幾乎無競爭者的技術主張，足以打破「紙材不耐用」的市場偏見，直接轉化為採購決策。' },
       { status:'core', title:'食品藥品衛生阻隔', note:'食品接觸安全認證',
         body:'安置期間食品、藥品的衛生包裝需求高。富迪的阻隔塗層是否符合食品接觸安全規範？',
-        q1:'FDA / 食品接觸安全認證？', q2:'從防災物資延伸到食品包裝的市場機會',
-        note:'認證是進入人道援助採購體系的敲門磚。' },
+        q1:'FDA / 食品接觸安全認證？', q2:'從防災物資延伸到食品包裝的市場機會', hint:'認證是進入人道援助採購體系的敲門磚。',
+        scene:'安置場所發放的每一個食品包裝，都需要符合衛生安全標準。在壓力大的情況下，工作人員不會有時間仔細辨別材質——認證是唯一的信任背書。',
+        sceneNote:'食品接觸認證不只是技術要求，更是進入政府和NGO採購名單的入場券。',
+        qs:['富迪目前是否持有食品接觸安全相關認證（FDA、EU 10/2011、台灣衛福部等）？','獲得認證的製程和材料組合，是否就是目前主推的去塑方案？','取得額外認證的時程和成本預估為何？'],
+        steps:[{t:'5m',n:'認證現況',d:'業務端列出目前持有的所有認證，以及正在申請中的項目。',tool:'認證清單'},{t:'8m',n:'市場要求',d:'人道援助採購體系（UN、紅十字會等）對食品包裝的認證要求為何？',tool:'市場研究'},{t:'10m',n:'缺口規劃',d:'現有認證與市場要求之間的缺口，如何補足？優先順序？',tool:'缺口分析'},{t:'7m',n:'策略討論',d:'食品包裝是否是富迪下一個重點攻入的市場？',tool:'策略決策'}],
+        dd_a:'過渡安置期食品和藥品的包裝安全直接影響受災者健康。衛生阻隔功能需要通過認證佐證，不能只依賴材質描述或口頭保證。',
+        dd_c:'現行人道援助採購對食品包裝有嚴格認證要求，許多替代方案因缺乏認證而無法進入採購名單，即使技術性能符合標準也無法成交。',
+        dd_d:'待填入：富迪食品接觸安全認證清單（現有與申請中）、認證適用的材料和製程範圍、阻隔塗層的油脂和水氣阻隔數據。',
+        dd_e:'食品接觸安全認證加上去塑材質，是目前市場上稀缺的組合。擁有此認證的富迪方案，可直接進入 UN、紅十字會等國際人道援助採購名單，市場規模遠超單一品牌客戶。' },
       { status:'maybe', title:'建材外包防潮', note:'低阻隔需求待評估',
         body:'木材、石膏板等建材對防潮有需求，但要求低於食品等級。紙構是否適合作為建材的外包裝層？',
-        q1:'建材包裝的防潮等級標準？', q2:'成本效益 vs 傳統 PE 膜包裝',
-        note:'如果成本有競爭力，這是大量需求的市場機會。' },
+        q1:'建材包裝的防潮等級標準？', q2:'成本效益 vs 傳統 PE 膜包裝', hint:'如果成本有競爭力，這是大量需求的市場機會。',
+        scene:'復原期大量建材進入災區，目前主要以 PE 收縮膜包裝，方便快速但製造大量塑料廢棄物。相對較低的防潮需求，讓紙材方案有可能切入。',
+        sceneNote:'這個場景的技術門檻低於食品包裝，但市場量大，是務實的切入點。',
+        qs:['建材外包裝的防潮需求等級（WVTR 值）通常是多少？富迪現有塗層可以覆蓋嗎？','與 PE 收縮膜相比，富迪方案的成本差異是多少？','建材採購方目前是否有永續包裝需求？還是純粹成本導向？'],
+        steps:[{t:'5m',n:'需求定義',d:'確認建材外包裝的具體防潮等級要求（以測試標準數據表達）。',tool:'技術確認'},{t:'10m',n:'成本分析',d:'富迪方案 vs PE 膜：材料成本、製程成本、廢棄物處理成本的完整比較。',tool:'成本試算'},{t:'8m',n:'市場探索',d:'業務端說明建材採購市場的決策邏輯，永續因素的實際影響力。',tool:'市場討論'},{t:'7m',n:'進入策略',d:'如果有競爭力，應該先攻哪個切入點？',tool:'策略決策'}],
+        dd_a:'復原期建材大量運入，現行 PE 收縮膜是主流包裝方式。這是一個技術需求相對低、但市場量大的去塑替換機會。',
+        dd_c:'PE 收縮膜成本低廉、操作簡便，是建材採購方的預設選擇。去塑替代方案如果成本差距過大，難以說服成本導向的採購決策。',
+        dd_d:'待填入：富迪方案對建材外包裝場景的防潮等級覆蓋能力、與 PE 膜的成本比較、適用建材類型的範圍。',
+        dd_e:'若成本具競爭力，這是從防災情境延伸到一般建材市場的橋樑。建材採購量龐大，即使只替換一定比例，對富迪的業務規模影響顯著。' },
       { status:'open', title:'防潮塗層回收分離', note:'技術可行性待確認',
         body:'帶有防潮塗層的紙材在回收端的處理方式？植物基塗層的碎漿分離技術成熟度如何？',
-        q1:'碎漿機（Hydrapulper）分離塗層的效率？', q2:'比對 4evergreen 指南的技術規範',
-        note:'塗層回收分離率是整個去塑主張能否成立的關鍵數據。' },
+        q1:'碎漿機（Hydrapulper）分離塗層的效率？', q2:'比對 4evergreen 指南的技術規範', hint:'塗層回收分離率是整個去塑主張能否成立的關鍵數據。',
+        scene:'去塑主張最大的弔詭：加了防潮塗層的紙材，在回收端能不能真的被乾淨分離？如果不能，去塑反而創造了更難回收的複合材料。',
+        sceneNote:'這是整個去塑論述的阿基里斯腱。如果沒有答案，所有前面的主張都可能被採購方質疑。',
+        qs:['富迪植物基塗層在標準碎漿機（Hydrapulper）中的分離效率是多少？','4evergreen 指南要求纖維回收率 90% 以上，富迪目前的數據是多少？','如果分離效率不足，補強的技術路徑是什麼？'],
+        steps:[{t:'5m',n:'問題確立',d:'先讓大家理解這個問題的重要性：為什麼回收分離率是去塑主張的基礎。',tool:'概念說明'},{t:'10m',n:'現有數據',d:'技術端誠實說明目前的分離效率數據，與 4evergreen 標準的差距。',tool:'數據呈現'},{t:'10m',n:'路徑討論',d:'如果有缺口：技術補強路徑是什麼？時程和成本預估？',tool:'技術路徑討論'},{t:'5m',n:'行動規劃',d:'確定誰負責推進這個技術問題的解決，時程節點為何。',tool:'行動記錄'}],
+        dd_a:'回收循環的可信度取決於這個關鍵技術細節：帶有防潮塗層的紙材，在工業回收流程中能否被有效分離，而不降低紙纖維的回收品質。',
+        dd_c:'傳統 PE 或 PLA 塗層在碎漿機中難以分離，導致紙纖維品質下降甚至整批廢料無法使用。這是讓採購方對「可回收紙材」存疑的根本原因。',
+        dd_d:'待填入：植物基塗層在碎漿機中的分離效率數據、4evergreen 標準符合程度、富迪纖維回收率實測報告。',
+        dd_e:'若富迪的植物基塗層可達到 4evergreen 要求的 90% 以上纖維回收率，這是目前市場上最強力的技術差異化主張——防潮性能與完全可回收性同時成立，打破業界長期認為兩者不可兼得的偏見。' },
     ]
   },
   {
@@ -612,24 +732,59 @@ const rows = [
     cells:[
       { status:'core', title:'規格化備料管理', note:'標準模組尺寸系列',
         body:'備災系統需要高度規格化的包裝尺寸，以利倉儲系統管理與快速盤點。富迪的紙構是否有標準模組尺寸系列？',
-        q1:'政府或NGO備災規格標準為何？', q2:'標準化尺寸系列的研發現況',
-        note:'規格化是進入政府採購體系的基本條件。' },
+        q1:'政府或NGO備災規格標準為何？', q2:'標準化尺寸系列的研發現況', hint:'規格化是進入政府採購體系的基本條件。',
+        scene:'政府備災倉儲系統要求所有物資包裝符合標準托盤尺寸和棧板規格，方便自動化盤點和出庫。不符規格的包裝，無論性能多好都可能被拒於採購名單之外。',
+        sceneNote:'這不是技術問題，而是系統整合問題。理解採購方的倉儲邏輯，比技術更重要。',
+        qs:['富迪目前的產品尺寸系列是如何制定的？是否有對應國際標準托盤（1200×1000mm）的模組設計？','政府和NGO的備災採購規格書中，對包裝尺寸有哪些具體要求？','客製化尺寸的最小訂量和交期是多少？'],
+        steps:[{t:'5m',n:'系統理解',d:'業務端說明主要客戶的倉儲系統規格和採購規範。',tool:'口述'},{t:'8m',n:'尺寸盤點',d:'技術端列出現有產品線的尺寸範圍，與標準托盤的符合程度。',tool:'尺寸表'},{t:'10m',n:'缺口分析',d:'哪些關鍵尺寸目前不在產品線內？補充的技術難度和成本？',tool:'缺口分析'},{t:'7m',n:'標準化計畫',d:'是否值得建立「備災包裝標準尺寸系列」？如何推進？',tool:'策略討論'}],
+        dd_a:'備災倉儲系統高度規格化，包裝尺寸需符合標準托盤和棧板規格，才能進入政府和NGO的採購體系。不符規格等同於被排除在市場之外。',
+        dd_c:'現行採購體系以塑料和瓦楞紙箱為主，這些材料的尺寸已與倉儲系統深度整合。新方案需要主動適應這套規格，而不是期待採購方調整系統。',
+        dd_d:'待填入：富迪現有產品尺寸系列、對應國際標準托盤的覆蓋程度、客製化尺寸的能力與限制。',
+        dd_e:'建立「備災包裝標準尺寸系列」，主動對接政府和NGO的倉儲規格，是進入這個採購市場的基礎建設。同時降低客戶的導入成本，加速採購決策。' },
       { status:'core', title:'快速展開包裝', note:'平整壓縮零工具組裝',
         body:'緊急救援時間極度壓縮，包裝必須能被非專業人員快速組裝。平整壓縮包裝 + 直覺組裝設計是關鍵。',
-        q1:'組裝步驟數上限？無工具組裝設計？', q2:'富迪是否有「零秒展開」設計案例？',
-        note:'這個功能若有實際案例，是極具說服力的展示素材。' },
+        q1:'組裝步驟數上限？無工具組裝設計？', q2:'富迪是否有「零秒展開」設計案例？', hint:'這個功能若有實際案例，是極具說服力的展示素材。',
+        scene:'災後 72 小時，物資發放點的工作人員可能是第一次見到這個包裝的志工。他們沒有說明書閱讀時間，也沒有工具。包裝必須在 10 秒內被直覺展開。',
+        sceneNote:'「零工具、10 秒展開」是可以被測試和量化的設計指標。如果有案例，直接展示比說明更有力。',
+        qs:['富迪目前最快的展開設計，從平整到可使用需要幾個步驟、幾秒鐘？','有沒有在真實救援場景中被使用的案例？工作人員的反應如何？','展開設計和結構強度之間是否有取捨？如何平衡？'],
+        steps:[{t:'5m',n:'指標確立',d:'定義「快速展開」的量化標準：幾個步驟？幾秒鐘？誰來測試？',tool:'指標討論'},{t:'10m',n:'現有方案演示',d:'若有實物，現場演示展開過程。若沒有，技術端描述設計機制。',tool:'實物演示'},{t:'8m',n:'比較討論',d:'和現有競品的展開設計相比，富迪的優勢在哪？弱點在哪？',tool:'比較分析'},{t:'7m',n:'優化方向',d:'最值得改善的設計點是什麼？誰負責推進？',tool:'優化討論'}],
+        dd_a:'黃金 72 小時的物資發放需要讓未經訓練的志工能立即上手。包裝的展開操作必須如此直覺，以至於不需要說明書，不需要工具，10 秒內完成。',
+        dd_c:'現行包裝大多需要美工刀或膠帶，部分需要多人協作展開，在緊急現場增加了不必要的操作複雜度和安全風險（刀具傷人）。',
+        dd_d:'待填入：富迪最快展開設計的步驟數和秒數實測、零工具展開的設計機制說明、使用者測試結果。',
+        dd_e:'零工具、直覺展開設計降低了救援現場的操作風險，同時提升物資發放效率。這個功能可以直接轉化為「每小時多發放 X 份物資」的量化效益，是採購決策最具說服力的商業論據。' },
       { status:'maybe', title:'多次開啟再利用', note:'耐用度待測試確認',
         body:'安置期間物資頻繁調配，包裝需支援多次開啟、重新封裝。紙構的耐用度能否支撐反覆使用？',
-        q1:'多次開啟的耐用度測試標準？', q2:'對比單次使用包裝的循環使用可行性',
-        note:'反覆使用設計和回收主張之間需要找到平衡點。' },
+        q1:'多次開啟的耐用度測試標準？', q2:'對比單次使用包裝的循環使用可行性', hint:'反覆使用設計和回收主張之間需要找到平衡點。',
+        scene:'安置場所的物資管理員需要頻繁開包取出部分物資，然後重新封裝保存剩餘。如果每次開封都破壞包裝，物資管理成本急劇上升。',
+        sceneNote:'「可重複封裝」和「可回收」之間有設計張力——需要找到兼顧的方案。',
+        qs:['富迪的紙構包裝，在設計上是否考慮過多次開啟的需求？目前的耐用度如何？','重複封裝機制（魔鬼氈、折疊封口、可重複膠帶）對材料回收性有何影響？','客戶目前是如何解決多次開啟後的包裝問題？有什麼痛點？'],
+        steps:[{t:'5m',n:'使用場景描述',d:'業務端描述客戶在安置場所實際遇到的物資管理痛點。',tool:'口述'},{t:'10m',n:'技術探索',d:'技術端評估哪些重複封裝機制可以與現有紙構製程整合。',tool:'技術討論'},{t:'8m',n:'設計取捨',d:'「耐用度」vs「輕量化」vs「回收性」三者之間如何取捨？',tool:'取捨矩陣'},{t:'7m',n:'優先方向',d:'最值得投入研發的重複封裝機制是什麼？',tool:'投票決策'}],
+        dd_a:'過渡安置期的物資管理需要頻繁開包取用、重新封裝保存，單次使用設計在這個場景中造成大量包裝浪費和管理成本上升。',
+        dd_c:'目前大多數紙製包裝為單次開啟設計，不支援可靠的重複封裝。若強行重複使用，結構完整性快速降低，保護功能失效。',
+        dd_d:'待填入：富迪針對多次開啟需求的設計方案（若有）、耐用度測試數據、重複封裝機制與回收性的相容性評估。',
+        dd_e:'可重複封裝設計減少安置期間的包裝消耗量，降低物資管理成本，同時延長每個包裝的使用壽命——這是「用更少材料解決更多問題」的永續設計核心主張。' },
       { status:'maybe', title:'二次包裝彈性', note:'物資轉移容器設計',
         body:'復原期物資需要在不同地點間轉移，包裝需要具備「二次包裝」功能或易於轉換容器。',
-        q1:'復原期物資流轉的典型情境？', q2:'可轉換容器設計的研發方向探索',
-        note:'此格概念較新，需要與業務端確認是否有實際客戶需求。' },
+        q1:'復原期物資流轉的典型情境？', q2:'可轉換容器設計的研發方向探索', hint:'此格概念較新，需要與業務端確認是否有實際客戶需求。',
+        scene:'復原期物資從中央倉儲轉移到社區分發點，再分配到家戶。每次轉移都可能需要重新分裝。現有包裝要麼太大要麼太脆弱，無法支援多層次轉移。',
+        sceneNote:'這個設計挑戰需要業務端先確認「多層次分發」是否是客戶的真實痛點。',
+        qs:['富迪的客戶在物資分發上，通常有幾個層次的轉移？每個層次的包裝需求有何差異？','「大包裝易於拆分為小包裝」的設計，在現有製程中可行嗎？','這個需求是客戶主動提出過，還是設計端的假設？'],
+        steps:[{t:'8m',n:'需求確認',d:'業務端描述客戶實際的物資分發流程，確認多層次轉移是否是真實痛點。',tool:'業務訪談分享'},{t:'10m',n:'設計探索',d:'如果是真實需求：大包可拆小包的設計，技術上如何實現？',tool:'設計草圖'},{t:'7m',n:'商業評估',d:'這個功能對採購決策的影響力有多大？是否值得研發？',tool:'商業討論'},{t:'5m',n:'決策',d:'進一步研發或存檔待確認。',tool:'決策記錄'}],
+        dd_a:'復原期物資分發需要多層次轉移（中央→社區→家戶），每個層次的包裝規格需求不同。目前缺乏可以靈活支援多層轉移的包裝解決方案。',
+        dd_c:'現行包裝無法在分發鏈的中途被有效重組，導致每個層次都需要重新打包，產生大量包裝廢棄物和額外的人工成本。',
+        dd_d:'待填入：富迪是否有可拆分模組化設計的可行性評估、多層次分發場景的包裝需求研究（如有）。',
+        dd_e:'若能設計「可拆分的模組化包裝系統」，一個包裝在不同分發層次都能發揮作用，大幅減少包裝總用量，同時降低每個層次的重新打包成本——這是一個強力的效率加永續組合主張。' },
       { status:'core', title:'快速壓平回收', note:'最小體積回收物流',
         body:'使用完畢的包裝能否快速壓平，以最小體積進入回收流程？模組化設計對回收端的物流效率影響。',
-        q1:'回收壓縮比率標準？', q2:'平整收納設計對回收物流成本的影響試算',
-        note:'壓縮比率是可以量化的差異化數據，值得重點發展。' },
+        q1:'回收壓縮比率標準？', q2:'平整收納設計對回收物流成本的影響試算', hint:'壓縮比率是可以量化的差異化數據，值得重點發展。',
+        scene:'大規模災後回收行動需要在短時間內清理大量包裝廢棄物。體積是決定回收物流成本的關鍵因子——每輛回收卡車能裝多少，決定了整體清運成本。',
+        sceneNote:'壓縮比率是可以量化的數據，直接轉化為物流成本節省，是採購方容易理解的商業論據。',
+        qs:['富迪紙構包裝在使用後，可以壓縮到原始體積的幾分之幾？','壓平操作需要工具或特殊步驟嗎？還是可以徒手完成？','與 EPS 保麗龍相比，回收物流成本的差異試算結果如何？'],
+        steps:[{t:'5m',n:'指標確立',d:'定義「快速壓平」的標準：操作時間、最終體積比率。',tool:'指標討論'},{t:'8m',n:'實物測試',d:'若有實物，現場演示壓平操作並量測壓縮比率。',tool:'實物測試'},{t:'10m',n:'成本試算',d:'以一次中型救援行動（1000 份物資）為例，試算回收物流成本差異。',tool:'成本計算'},{t:'7m',n:'設計優化',d:'是否有可以進一步提升壓縮比率的設計改良空間？',tool:'優化討論'}],
+        dd_a:'回收循環效率直接影響清運成本和執行可行性。包裝使用後能否快速壓平至最小體積，是決定回收物流經濟性的關鍵設計特徵。',
+        dd_c:'EPS 保麗龍和 EPE 泡棉在回收時體積龐大，需要大量車次清運，回收物流成本高昂，往往導致清運承包商直接送垃圾焚化，而非進入回收流程。',
+        dd_d:'待填入：富迪紙構包裝的壓縮比率實測數據（展開體積 vs 壓平體積）、壓平操作步驟描述、與主要競品的回收物流成本比較試算。',
+        dd_e:'若壓縮比率達到 1:5 以上，回收物流成本可降低 60~80%，使回收行動在經濟上成為可行選項而非額外負擔——這個數據直接轉化為環保主張和成本效益的雙重論據。' },
     ]
   },
   {
@@ -638,24 +793,59 @@ const rows = [
     cells:[
       { status:'maybe', title:'備災品牌信任感', note:'觸感與視覺安心設計',
         body:'備災包裝的視覺設計能否強化使用者的備災行動意願？紙質觸感是否傳遞安心與信任感？',
-        q1:'消費者對備災包裝的視覺期待為何？', q2:'備災包裝的感知設計研究文獻',
-        note:'這是一個未被充分開發的設計議題，可作為差異化研究方向。' },
+        q1:'消費者對備災包裝的視覺期待為何？', q2:'備災包裝的感知設計研究文獻', hint:'這是一個未被充分開發的設計議題，可作為差異化研究方向。',
+        scene:'個人備災包（家庭防災箱）是消費者最直接接觸備災產品的形式。如果包裝傳遞的視覺感受是「工業品、急救工具」，可能讓人避而遠之；若能傳遞「生活美學、預防關懷」，可能提升備災行動意願。',
+        sceneNote:'這是感知設計對行為改變的議題，需要設計研究支撐，不能只憑直覺。',
+        qs:['目前市場上的家庭備災包，在視覺設計上有什麼共同特徵？消費者反應如何？','富迪是否有消費者對紙質包裝的感知研究或調查數據？','「備災品牌信任感」和「日常生活美學」如何在同一個包裝設計上共存？'],
+        steps:[{t:'5m',n:'競品觀察',d:'每人描述一個他們見過的備災相關包裝，說明給自己的第一印象。',tool:'感知分享'},{t:'10m',n:'感知對比',d:'展示不同材質和設計風格的包裝圖像，讓參與者直覺評分。',tool:'圖像評分'},{t:'10m',n:'設計機會',d:'富迪的材質特性（紙質觸感、印刷表現）在這個場景的設計機會在哪？',tool:'機會討論'},{t:'5m',n:'研究規劃',d:'這個議題是否值得進一步做消費者研究？如何設計研究方法？',tool:'研究規劃'}],
+        dd_a:'個人備災行動的最大障礙不是知識不足，而是心理距離太遠。如果備災包裝的視覺語言更接近日常生活美學而非急救物品，可能直接提升備災行動率。',
+        dd_c:'目前備災相關產品以工業感視覺為主——橄欖綠、橘色警示、金屬扣件——傳遞的是「緊急」和「危機」，讓許多人下意識迴避。',
+        dd_d:'待填入：富迪是否有在消費端產品的視覺設計案例？印刷和表面處理的設計彈性有多大？',
+        dd_e:'「備災即日常」的視覺設計哲學，讓富迪的紙質包裝成為改變社會備災行為的設計工具，而不只是容器。這個敘事可以延伸為品牌社會責任的核心故事。' },
       { status:'core', title:'緊急辨識介面', note:'圖示色彩直覺操作',
         body:'在混亂的災後現場，包裝的視覺辨識（顏色、圖示、文字）需要讓非專業人員立即判斷內容物與使用方式。',
-        q1:'國際救援包裝的視覺標準（如ISO）？', q2:'富迪在包裝視覺設計的現有能力盤點',
-        note:'需確認富迪目前是否有專屬的視覺設計能力，或需要外部合作。' },
+        q1:'國際救援包裝的視覺標準（如ISO）？', q2:'富迪在包裝視覺設計的現有能力盤點', hint:'需確認富迪目前是否有專屬的視覺設計能力，或需要外部合作。',
+        scene:'發放點志工面前擺著數十種外觀相似的包裝，需要在幾秒鐘內判斷哪個是藥品、哪個是食物、哪個是嬰兒用品。錯誤辨識可能造成嚴重後果。',
+        sceneNote:'這是包裝的「使用者介面設計」問題，和數位產品的 UX 邏輯完全相同。',
+        qs:['富迪目前在包裝印刷和視覺設計上有什麼能力？是否有專屬設計團隊？','UN 或紅十字會對緊急救援包裝的視覺識別有哪些規範要求？','富迪的紙材表面對高對比度印刷（白色 on 深色）的效果如何？'],
+        steps:[{t:'5m',n:'場景模擬',d:'請每人閉上眼睛，想像在混亂現場需要找到嬰兒食品——睜開眼後描述他們會找什麼視覺特徵。',tool:'情境模擬'},{t:'8m',n:'標準研究',d:'分享國際救援包裝的視覺設計規範和案例。',tool:'案例分享'},{t:'10m',n:'設計能力盤點',d:'富迪在視覺設計上的現有能力和限制，以及與外部合作的可能性。',tool:'能力盤點'},{t:'7m',n:'優先設計議題',d:'在緊急辨識介面上，最值得投入的設計改善是什麼？',tool:'優先排序'}],
+        dd_a:'黃金 72 小時的物資發放現場是認知超載的環境——噪音、疲憊、壓力。包裝的視覺辨識系統必須在 3 秒內傳達物資類別和使用方式，不能依賴文字閱讀。',
+        dd_c:'目前國際人道援助物資缺乏統一的視覺識別系統，不同機構、不同物資的包裝視覺各自為政，造成發放現場的混亂和錯誤分配。',
+        dd_d:'待填入：富迪紙材表面的印刷解析度、顏色還原能力、特殊印刷工藝（如夜光、防水墨水）的支援範圍。',
+        dd_e:'建立以富迪材質為基礎的「緊急物資視覺識別系統」，可以成為富迪對人道援助市場的系統性提案——不只賣包裝，而是提供整套的視覺溝通解決方案。' },
       { status:'core', title:'人道尊嚴感知', note:'紙質溫潤對比塑料',
         body:'安置期的包裝不應強化「救濟物資」的stigma。紙質的溫潤質感相比塑料更能傳達人道關懷，是富迪去塑方案最具差異化的情感價值。',
-        q1:'災民對包裝材質的感知研究有哪些？', q2:'人道主義包裝設計的國際案例',
-        note:'這是整個報告情感層次最高的論點，需要研究數據支撐。' },
+        q1:'災民對包裝材質的感知研究有哪些？', q2:'人道主義包裝設計的國際案例', hint:'這是整個報告情感層次最高的論點，需要研究數據支撐。',
+        scene:'災後第 3～30 天，受災者每天接觸的物資包裝，是他們與外界照護最直接的物質連結。材質傳遞的感知訊號——冷硬塑料 vs 溫潤紙質——在此時有著不成比例的情感影響力。',
+        sceneNote:'這是整個矩陣情感維度最高的論點。要讓客戶相信，需要研究佐證，不只是設計師的感性主張。',
+        qs:['是否有心理學或人道援助研究，探討物資包裝材質對受災者感知的影響？','富迪是否有接觸過人道援助組織（NGO）的客戶？他們對這個論點的反應如何？','如何將這個感知差異轉化為可量化的指標（如受益者滿意度調查）？'],
+        steps:[{t:'5m',n:'情境錨定',d:'朗讀情境描述，請一位參與者分享他們認識的人有過在安置場所的經驗。',tool:'故事分享'},{t:'8m',n:'感知盤點',d:'便利貼：現有塑料包裝給你的感受 vs 你希望這個包裝傳遞的感受，對比貼板。',tool:'便利貼對比'},{t:'10m',n:'設計機會',d:'富迪的材質在「視覺、觸感、聲音」三個感知維度，分別能傳遞什麼？',tool:'多感官討論'},{t:'7m',n:'商業可行性',d:'採購方（政府、NGO）有沒有可能為「尊嚴感知」這個價值付出溢價？',tool:'業務端表態'}],
+        dd_a:'過渡安置期受災者心理狀態脆弱，每天接觸的物資包裝傳遞的不只是物資，還有「被照顧的方式」。材質的感知差異在此時有著不成比例的情感影響力。',
+        dd_c:'現行物資包裝以黑色垃圾袋、透明 PE 膜為主，強烈的工業感和廢棄物隱喻，無意間強化了受災者「我是被救濟的人」的身份標籤，不利心理修復。',
+        dd_d:'待填入：富迪紙材的觸感描述（克重、表面處理）、可實現的印刷和視覺設計範疇、溫潤質感的具體設計語言。',
+        dd_e:'紙質包裝傳遞照護語言而非廢棄物語言，是富迪去塑方案最獨特的情感附加值。若能有心理研究數據支撐，這個論點可以直接轉化為人道援助採購的差異化論述，是目前任何塑料替代方案都無法複製的定位。' },
       { status:'maybe', title:'社區再製參與感', note:'包裝作為重建材料',
         body:'復原期的包裝若能帶有「可再製作」屬性（如紙板可作為臨時隔板、書寫面），能強化社區自助感。',
-        q1:'災後社區有哪些再利用需求的研究？', q2:'富迪材料在二次手工使用上的可行性',
-        note:'概念層次高，但實際可行性需要技術端評估。' },
+        q1:'災後社區有哪些再利用需求的研究？', q2:'富迪材料在二次手工使用上的可行性', hint:'概念層次高，但實際可行性需要技術端評估。',
+        scene:'復原期社區在等待正式重建資源到位之前，通常會發展出大量臨時的自助修繕行為。如果包裝材料可以被社區成員用於臨時隔板、告示牌、包裝禮物，這個材料本身就成為重建心理的參與工具。',
+        sceneNote:'這個概念的商業邏輯需要確認：誰願意為這個加值功能付費？',
+        qs:['富迪的紙構材料在切割、折疊、書寫方面，一般人可以徒手操作嗎？需要什麼工具？','有沒有研究探討災後社區的臨時自助修繕行為和材料需求？','「包裝即建材」的設計概念，目前是否有任何先例或參考案例？'],
+        steps:[{t:'5m',n:'概念確立',d:'確認「可再製作」的具體定義：需要工具嗎？需要技能嗎？',tool:'概念討論'},{t:'10m',n:'技術可行性',d:'技術端評估富迪材料在切割、折疊、書寫方面的使用者可操作性。',tool:'技術評估'},{t:'8m',n:'使用情境',d:'發散討論：復原期的社區成員最可能用廢棄包裝做什麼？',tool:'情境發散'},{t:'7m',n:'商業邏輯',d:'這個加值功能，誰是願意為它付費的採購方？',tool:'商業討論'}],
+        dd_a:'復原期社區在等待正式資源時，會主動發展臨時自助修繕行為。若包裝材料可以輕易轉化為隔板、告示牌或包材，成為社區重建工具，包裝本身就成為復原過程的參與節點。',
+        dd_c:'目前包裝材料在開封後立即成為廢棄物，既是環境負擔，也是復原現場的雜亂來源。沒有任何設計考慮到包裝在使用後的「社區再製」潛力。',
+        dd_d:'待填入：富迪紙構材料在使用者可操作場景（切割、折疊、書寫）的易用性評估、克重和表面處理對書寫和裁剪的影響。',
+        dd_e:'「包裝即社區工具」的設計概念，讓物資包裝在完成運輸使命後成為重建資源而非廢棄物，是零廢棄設計思維的具體實踐。若能與NGO合作推廣，這個故事具有強大的品牌傳播潛力。' },
       { status:'open', title:'回收行為引導設計', note:'可行性待評估',
         body:'回收過程本身是否能成為一個「感知儀式」？清晰的回收引導設計（顏色標示、撕線設計）能否提升災後的回收參與率？',
-        q1:'災後回收行為研究？', q2:'可視化回收引導設計的提案方向',
-        note:'若有研究支撐，這是一個強力的 ESG 敘事素材。' },
+        q1:'災後回收行為研究？', q2:'可視化回收引導設計的提案方向', hint:'若有研究支撐，這是一個強力的 ESG 敘事素材。',
+        scene:'回收循環的最後一哩路，是讓受災民眾願意且能夠正確分類回收。在心理壓力大、資訊混亂的災後環境，回收行為的引導設計決定了整個循環系統能否真正閉環。',
+        sceneNote:'這個格子的核心問題是：設計能不能改變行為？需要行為科學的視角。',
+        qs:['是否有研究探討災後環境中的回收行為——人們在什麼條件下願意分類回收？','包裝上的撕線設計、顏色標示等視覺引導，有沒有提升回收率的實證數據？','富迪的紙材是否支援撕線、打孔等回收引導設計特徵？'],
+        steps:[{t:'5m',n:'問題框架',d:'確認這是一個「設計問題」還是「行為問題」——解法的性質完全不同。',tool:'框架討論'},{t:'10m',n:'行為研究',d:'分享任何關於災後回收行為或包裝回收引導設計的研究案例。',tool:'案例分享'},{t:'10m',n:'設計可能性',d:'技術端評估哪些回收引導設計特徵可以整合到現有製程。',tool:'技術評估'},{t:'5m',n:'研究規劃',d:'是否值得進行一個小規模的回收引導設計實驗？',tool:'研究規劃'}],
+        dd_a:'回收循環系統的最後一哩：受災民眾在物資使用後，能否被有效引導進行正確分類回收？這直接決定了整個閉環系統在現實中能否成立。',
+        dd_c:'災後環境下，回收行為面臨多重障礙：心理疲憊、資訊不足、基礎設施缺乏。即使民眾有意願，也常常因為不知道如何正確分類而放棄。',
+        dd_d:'待填入：富迪紙材對撕線、打孔、色塊分區等回收引導設計特徵的支援能力。',
+        dd_e:'若能設計出「使用即引導回收」的包裝——例如撕開特定位置自動分離可回收部分——這是一個強力的 ESG 行動設計故事：不需要使用者學習，包裝本身就完成了回收引導。' },
     ]
   },
   {
@@ -664,24 +854,59 @@ const rows = [
     cells:[
       { status:'maybe', title:'ESG 採購認證', note:'政府採購門檻符合',
         body:'政府與企業的備災採購愈來愈要求ESG認證。富迪是否有FSC、ISO 14001等認證，能直接回應採購規範？',
-        q1:'台灣政府備災採購的ESG要求現況？', q2:'富迪現有認證清單與缺口分析',
-        note:'認證缺口的分析可以直接轉化為建議客戶優先投資的方向。' },
+        q1:'台灣政府備災採購的ESG要求現況？', q2:'富迪現有認證清單與缺口分析', hint:'認證缺口的分析可以直接轉化為建議客戶優先投資的方向。',
+        scene:'政府採購已開始將 ESG 認證列為評分項目，部分大型企業的供應鏈審查也要求備災物資供應商提供永續認證。沒有認證，等同於在這個市場的準入門檻前止步。',
+        sceneNote:'認證策略是業務決策，不只是技術問題。需要業務端主導討論優先順序。',
+        qs:['富迪目前持有哪些永續相關認證（FSC、ISO 14001、碳標籤等）？','台灣政府備災採購規範中，ESG 相關要求目前的執行力度如何？有罰則嗎？','最值得優先申請的認證是哪個？投入產出比最高？'],
+        steps:[{t:'5m',n:'認證現況',d:'業務端列出富迪所有現有認證，說明各認證對市場準入的實際影響。',tool:'認證清單'},{t:'10m',n:'市場需求',d:'主要目標市場（政府、NGO、企業）對認證的實際要求是什麼？',tool:'市場分析'},{t:'8m',n:'缺口分析',d:'現有認證與市場要求之間的缺口，哪個影響最大？',tool:'缺口矩陣'},{t:'7m',n:'策略規劃',d:'認證優先順序排序，時程和預算估算。',tool:'策略決策'}],
+        dd_a:'政府和企業備災採購規範日益嚴格，ESG 認證從加分項目逐漸成為準入門檻。富迪的認證組合直接決定了能進入哪些採購名單。',
+        dd_c:'現有備災包裝供應商多為傳統包裝廠，ESG 認證普遍不足。這既是挑戰（客戶有新需求），也是機會（先取得認證者佔據競爭優勢）。',
+        dd_d:'待填入：富迪現有完整認證清單（含認證機構、有效期、適用範圍）。',
+        dd_e:'系統性的認證策略讓富迪成為永續備災包裝市場的標準制定者而非跟隨者。先佔優勢在認證壁壘建立後將很難被後進者追上。' },
       { status:'open', title:'緊急廢棄物處理', note:'設計挑戰待討論',
         body:'緊急時期使用後的包裝廢棄物如何快速處理？在混亂環境中，可回收性的「可操作性」是否仍然成立？',
-        q1:'緊急情況下的廢棄物處理規範？', q2:'「緊急可用 + 事後可回收」的設計矛盾如何解決？',
-        note:'這個矛盾若能被設計解決，是一個強力的技術故事。' },
+        q1:'緊急情況下的廢棄物處理規範？', q2:'「緊急可用 + 事後可回收」的設計矛盾如何解決？', hint:'這個矛盾若能被設計解決，是一個強力的技術故事。',
+        scene:'黃金 72 小時，物資發放完畢後留下大量廢棄包裝。現場沒有分類設施、沒有足夠的人力執行廢棄物管理。可回收設計在這個情境下的「可操作性」是最大的現實挑戰。',
+        sceneNote:'這是整個去塑主張的最大弱點之一。正視它比迴避它更有說服力。',
+        qs:['在災後緊急現場，廢棄物處理的實際流程是什麼？誰負責？有規範嗎？','「緊急可用」和「事後可回收」之間，是否存在真實的設計矛盾？','最可行的解決方向是：設計端（讓回收更簡單）、系統端（建立緊急回收機制）還是兩者結合？'],
+        steps:[{t:'5m',n:'問題確立',d:'確認這是富迪需要誠實面對的挑戰：去塑在緊急現場的操作可行性。',tool:'問題確立'},{t:'10m',n:'現場調研',d:'業務端分享他們了解的緊急廢棄物處理實際情況。',tool:'業務分享'},{t:'10m',n:'解決方向',d:'設計端、系統端各自的解決可能性和難度評估。',tool:'方向討論'},{t:'5m',n:'立場確立',d:'富迪對這個挑戰的官方立場是什麼？如何誠實說明又維持說服力？',tool:'立場討論'}],
+        dd_a:'黃金 72 小時的緊急現場缺乏廢棄物分類基礎設施和執行人力，是去塑包裝「事後可回收」主張在現實操作中面臨最大挑戰的場景。',
+        dd_c:'即使包裝材質本身完全可回收，在緊急現場沒有分類設施的情況下，所有廢棄物往往混合處理，可回收性等同於形同虛設。',
+        dd_d:'待填入：是否有針對此挑戰的設計解法（如不需分類的單一材質設計）、或與緊急廢棄物管理系統的整合方案。',
+        dd_e:'若能提出「緊急環境下的零分類回收設計」——例如整個包裝使用單一可回收纖維材質，廢棄物管理人員不需分類即可整批送廠回收——這個設計解法本身就是強力的技術故事，也是目前市場上缺乏的解決方案。' },
       { status:'maybe', title:'可溯源物資追蹤', note:'QR code 紙材整合',
         body:'安置期間物資的流向追蹤需求高。若包裝具備可溯源技術（QR code、RFID友善紙材），可同時解決物資管理與ESG報告需求。',
-        q1:'富迪的可溯源技術成熟度？', q2:'物資管理系統整合的可行性',
-        note:'可溯源技術是B2B客戶的高附加值服務機會。' },
+        q1:'富迪的可溯源技術成熟度？', q2:'物資管理系統整合的可行性', hint:'可溯源技術是B2B客戶的高附加值服務機會。',
+        scene:'安置場所管理員需要掌握哪些物資發放給了哪些人、還剩多少庫存、何時需要補貨。現有紙質包裝難以整合數位追蹤，導致管理仍依賴人工記錄，效率低且容易出錯。',
+        sceneNote:'這個需求是 B2B 客戶（政府、NGO）的物資管理痛點，不是受災者的直接需求。商業邏輯在採購方。',
+        qs:['富迪的紙材是否支援 RFID 天線整合？QR code 的印刷精度可以達到掃描識別的要求嗎？','目前是否有客戶要求包裝具備可溯源功能？他們的具體需求是什麼？','可溯源技術的整合成本，採購方是否願意承擔？還是需要政府補貼支持？'],
+        steps:[{t:'5m',n:'需求確認',d:'業務端說明是否有客戶提出可溯源需求，具體要求是什麼。',tool:'業務分享'},{t:'10m',n:'技術評估',d:'技術端評估 QR code 印刷和 RFID 整合的技術可行性和成本。',tool:'技術評估'},{t:'8m',n:'市場潛力',d:'這個功能對哪類客戶最有吸引力？市場規模如何？',tool:'市場討論'},{t:'7m',n:'開發規劃',d:'是否值得列入產品研發路線圖？優先級如何？',tool:'策略決策'}],
+        dd_a:'過渡安置期物資管理需要精確追蹤：哪些物資發放給了哪些受益者、庫存狀態、補貨時機。這些數據同時也是援助組織 ESG 報告的重要佐證。',
+        dd_c:'現有物資追蹤依賴人工記錄或獨立的標籤系統，包裝本身不具備數位可溯源功能。在物資量大、人手不足的緊急現場，追蹤數據嚴重失真。',
+        dd_d:'待填入：富迪紙材對 QR code 印刷精度的支援能力、RFID 天線整合的技術可行性評估、成本預估。',
+        dd_e:'可溯源包裝讓每一個包裝成為物資管理系統的節點，同時產生援助組織 ESG 報告所需的物資流向數據。這是「包裝即服務」的商業模式轉型機會，潛在客單價遠高於單純的材料銷售。' },
       { status:'core', title:'碳足跡 LCA 佐證', note:'ESG 報告直接引用',
         body:'復原期進入正式採購與援助報告階段。富迪去塑方案的碳足跡數據，可直接作為採購方 ESG 報告的佐證材料。',
-        q1:'富迪目前是否有 LCA（生命週期評估）數據？', q2:'對比等量塑料包裝的碳排放差異',
-        note:'LCA 數據是目前 B2B 採購中最具說服力的永續佐證。' },
+        q1:'富迪目前是否有 LCA（生命週期評估）數據？', q2:'對比等量塑料包裝的碳排放差異', hint:'LCA 數據是目前 B2B 採購中最具說服力的永續佐證。',
+        scene:'大型企業和政府機構的 ESG 報告需要具體數據支撐，不接受「我們用了環保材料」這樣的定性描述。採購富迪方案的客戶，需要能夠在自己的 ESG 報告中引用具體的碳減少數字。',
+        sceneNote:'LCA 數據不只是技術文件，是銷售工具。有數據的供應商在 ESG 採購市場有決定性優勢。',
+        qs:['富迪目前是否有完整的 LCA（生命週期評估）報告？覆蓋哪些製程範圍？','與等量 PE 或 PET 包裝相比，富迪方案的碳足跡差異大約是多少？','LCA 報告是否由第三方機構驗證？驗證機構是誰？'],
+        steps:[{t:'5m',n:'LCA 現況',d:'技術端說明目前 LCA 數據的覆蓋範圍和可信度等級。',tool:'數據說明'},{t:'8m',n:'市場需求',d:'主要客戶在 ESG 報告中需要哪種格式和精度的碳足跡數據？',tool:'需求分析'},{t:'10m',n:'缺口補強',d:'現有 LCA 數據的缺口是什麼？補強的時程和成本？',tool:'缺口規劃'},{t:'7m',n:'行銷應用',d:'如何將 LCA 數據整合到銷售提案中，讓採購方最容易使用？',tool:'行銷策略'}],
+        dd_a:'復原期進入正式援助報告和採購審計階段。採購方的 ESG 合規要求需要供應商提供具體的碳足跡數據，而不只是材質聲明。',
+        dd_c:'大多數包裝供應商缺乏第三方驗證的 LCA 數據，採購方的 ESG 報告因此出現數據空白，面臨審計風險。能提供可引用數據的供應商具有明顯差異化優勢。',
+        dd_d:'待填入：富迪現有 LCA 報告的覆蓋範圍、數據精度、第三方驗證機構，以及與塑料方案的碳足跡比較數字。',
+        dd_e:'第三方驗證的 LCA 數據讓採購方可以直接在 ESG 報告中引用，降低審計風險，提升報告可信度。這個數據服務的價值遠超材料本身，是與採購方建立長期合作關係的基礎。' },
       { status:'core', title:'完整閉環方案', note:'富迪差異化最高點',
         body:'這是整個報告的終點也是富迪差異化的最高點。從備災到回收，富迪能否提供一套完整的「閉環循環包裝方案」，並以具體數據說明？',
-        q1:'富迪目前有無完整閉環案例？', q2:'循環經濟主張的敘事架構設計',
-        note:'若有一個完整的閉環案例，可以成為整個報告的壓軸故事。' },
+        q1:'富迪目前有無完整閉環案例？', q2:'循環經濟主張的敘事架構設計', hint:'若有一個完整的閉環案例，可以成為整個報告的壓軸故事。',
+        scene:'整個防災歷程走完：物資在備災期準備、在緊急期使用、在安置期完成使命、最終進入回收再製。如果富迪能提供這整個循環的完整解決方案，就不只是包裝供應商，而是「防災永續系統夥伴」。',
+        sceneNote:'這是整個矩陣的壓軸故事。一個好的閉環案例，比所有技術說明都更有說服力。',
+        qs:['富迪目前是否有任何接近「完整閉環」的客戶案例——即同一個客戶使用了從設計到回收的完整服務？','建立完整閉環服務需要富迪自己具備哪些現在尚不具備的能力？需要合作夥伴嗎？','如果沒有完整案例，最接近的局部案例是什麼？可以如何敘事？'],
+        steps:[{t:'5m',n:'願景確立',d:'描述理想中「完整閉環防災包裝」的樣子——從備災到回收再製，每個節點的富迪參與方式。',tool:'願景描述'},{t:'10m',n:'現況盤點',d:'富迪目前在這個閉環中，哪些節點已經具備能力，哪些還不具備？',tool:'能力盤點'},{t:'10m',n:'案例挖掘',d:'是否有任何現有客戶案例，可以被重新詮釋為局部閉環的故事？',tool:'案例討論'},{t:'5m',n:'路徑規劃',d:'達到完整閉環能力需要幾年？關鍵里程碑是什麼？',tool:'路徑規劃'}],
+        dd_a:'回收循環是整個防災包裝系統的終點，也是整個永續主張的閉合點。若富迪能提供從備災設計到回收再製的完整閉環服務，就成為了「防災永續系統夥伴」而非「包裝供應商」。',
+        dd_c:'目前市場上的包裝供應商只提供材料和製造，不參與回收和再製環節。採購方需要自行協調多個供應商才能完成循環，成本高、責任不清、數據無法整合。',
+        dd_d:'待填入：富迪目前在閉環各節點的服務能力（設計、製造、使用追蹤、回收、再製）；若有完整案例，完整的數據和故事。',
+        dd_e:'完整閉環服務讓富迪從材料供應商轉型為循環系統服務商，客單價和客戶黏著度都大幅提升。這是富迪 10 年競爭壁壘的核心建設方向，也是整個報告的終極主張。' },
     ]
   },
 ];
@@ -692,13 +917,25 @@ const statusMeta = {
   open:  { dot:'#aaa',    label:'待填入 — 需客戶 input 後補充' },
 };
 
+const discussStepsData = {
+  default: [
+    {t:'5m', n:'情境錨定', d:'主持人朗讀情境描述，邀請一位分享相關真實經驗。', tool:'口述 + 開放提問'},
+    {t:'8m', n:'感知盤點', d:'每人寫便利貼：現有痛點 vs 理想目標，對比貼板。', tool:'便利貼 · 對比版面'},
+    {t:'10m', n:'設計機會', d:'富迪材質和技術在此場景的先天優勢與設計缺口？', tool:'白板討論 · 記錄關鍵詞'},
+    {t:'7m', n:'商業測試', d:'這個差異化有市場嗎？業務端表態。', tool:'業務端主導發言'},
+    {t:'5m', n:'點點貼投票', d:'選出最值得深化的機會，記錄行動與負責人。', tool:'點點貼 · 行動記錄'},
+  ]
+};
+
 let activeCell = null;
+let currentMode = 'display';
+let currentRi = null;
+let currentCi = null;
 
 function buildMatrix() {
   const tbody = document.getElementById('matrix-body');
   rows.forEach((row, ri) => {
     const tr = document.createElement('tr');
-    // row label
     const th = document.createElement('th');
     th.className = 'row-label-cell';
     th.innerHTML = `<div class="row-label-inner"><div class="row-name">${row.name}</div><div class="row-sub">${row.sub.replace(/\n/g,'<br>')}</div></div>`;
@@ -706,8 +943,7 @@ function buildMatrix() {
     row.cells.forEach((cell, ci) => {
       const td = document.createElement('td');
       td.className = 'm-cell';
-      td.dataset.ri = ri;
-      td.dataset.ci = ci;
+      td.dataset.ri = ri; td.dataset.ci = ci;
       if (cell.status === 'open') {
         td.innerHTML = `<div class="m-cell-inner"><div class="m-open-tag">${cell.title}</div></div>`;
       } else {
@@ -725,28 +961,94 @@ function selectCell(td, ri, ci) {
   if (activeCell) activeCell.classList.remove('active');
   td.classList.add('active');
   activeCell = td;
+  currentRi = ri; currentCi = ci;
+  renderDetail(ri, ci, currentMode);
+}
 
+function switchMode(mode) {
+  currentMode = mode;
+  document.getElementById('btn-display').className = 'mode-btn' + (mode === 'display' ? ' active-display' : '');
+  document.getElementById('btn-discuss').className = 'mode-btn' + (mode === 'discuss' ? ' active-discuss' : '');
+  if (currentRi !== null) renderDetail(currentRi, currentCi, mode);
+}
+
+function renderDetail(ri, ci, mode) {
   const row = rows[ri];
   const cell = row.cells[ci];
   const phase = phases[ci];
   const sm = statusMeta[cell.status];
 
   document.getElementById('detail-empty').style.display = 'none';
-  const dc = document.getElementById('detail-content');
-  dc.classList.remove('visible');
-  void dc.offsetWidth;
-  dc.classList.add('visible');
+  document.getElementById('mode-bar').classList.add('visible');
+  document.getElementById('d-card-top').classList.add('visible');
+  document.getElementById('d-card-footer').classList.add('visible');
 
-  document.getElementById('d-tags').innerHTML =
+  document.getElementById('btn-display').className = 'mode-btn' + (mode === 'display' ? ' active-display' : '');
+  document.getElementById('btn-discuss').className = 'mode-btn' + (mode === 'discuss' ? ' active-discuss' : '');
+
+  const tagsEl = document.getElementById('d-tags');
+  const modeBadge = mode === 'display'
+    ? `<span class="d-mode-badge tag-display">展示版</span>`
+    : `<span class="d-mode-badge tag-discuss">討論版</span>`;
+  tagsEl.innerHTML =
     `<span class="d-phase-tag" style="background:${phase.color};color:${phase.tcolor}">${phase.name}</span>` +
-    `<span class="d-func-tag">${row.name}</span>`;
+    `<span class="d-func-tag">${row.name}</span>` + modeBadge;
+
   document.getElementById('d-title').textContent = cell.title;
-  document.getElementById('d-body').textContent = cell.body;
-  document.getElementById('d-q1').textContent = cell.q1;
-  document.getElementById('d-q2').textContent = cell.q2;
+
+  const displayBody = document.getElementById('d-display-body');
+  const discussBody = document.getElementById('d-discuss-body');
+
+  if (mode === 'display') {
+    document.getElementById('d-subtitle').textContent = cell.note;
+    displayBody.classList.add('visible');
+    discussBody.classList.remove('visible');
+
+    document.getElementById('dd-a').textContent = cell.dd_a || cell.body;
+    document.getElementById('dd-b').textContent = '待富迪確認方案名稱';
+    document.getElementById('dd-b').className = 'd-field-empty';
+    document.getElementById('dd-c').textContent = cell.dd_c || cell.q1;
+    document.getElementById('dd-d').textContent = cell.dd_d || '待填入：富迪技術端確認後補充。';
+    document.getElementById('dd-e').textContent = cell.dd_e || cell.q2;
+
+    document.getElementById('d-footer-note').textContent = 'f、g 欄位待客戶補充';
+    document.getElementById('d-footer-badge').textContent = '技術展示';
+    document.getElementById('d-footer-badge').className = 'd-footer-badge tag-display';
+  } else {
+    document.getElementById('d-subtitle').textContent = '建議討論時間 25–35 分鐘 · 4–6 人小組';
+    displayBody.classList.remove('visible');
+    discussBody.classList.add('visible');
+
+    document.getElementById('dq-scene').textContent = cell.scene || cell.body;
+    document.getElementById('dq-note').textContent = cell.sceneNote || cell.hint;
+
+    const qs = cell.qs || [cell.q1, cell.q2];
+    const qlistEl = document.getElementById('dq-qlist');
+    qlistEl.innerHTML = '';
+    qs.forEach((q, i) => {
+      const div = document.createElement('div');
+      div.className = 'd-qrow';
+      div.innerHTML = `<div class="d-qnum">${i+1}</div><div class="d-qtxt">${q}</div>`;
+      qlistEl.appendChild(div);
+    });
+
+    const steps = cell.steps || discussStepsData.default;
+    const stepsEl = document.getElementById('dq-steps');
+    stepsEl.innerHTML = '';
+    steps.forEach(s => {
+      const div = document.createElement('div');
+      div.className = 'd-step';
+      div.innerHTML = `<div class="d-step-num">${s.n}<br>${s.t}</div><div><div class="d-step-title">${s.n}</div><div class="d-step-desc">${s.d}</div><span class="d-tool-tag">${s.tool}</span></div>`;
+      stepsEl.appendChild(div);
+    });
+
+    document.getElementById('d-footer-note').textContent = '主持人提示：步驟 4 若業務端沉默，本身即是重要研究發現';
+    document.getElementById('d-footer-badge').textContent = '工作坊討論';
+    document.getElementById('d-footer-badge').className = 'd-footer-badge tag-discuss';
+  }
+
   document.getElementById('d-sdot').style.background = sm.dot;
   document.getElementById('d-slabel').textContent = sm.label;
-  document.getElementById('d-note').textContent = cell.note;
 }
 
 buildMatrix();
