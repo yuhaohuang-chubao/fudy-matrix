@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>富迪去塑包裝設計矩陣 — 防災情境研究框架</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0;
+  --surface: #ffffff;
+  --surface2: #f0ede6;
+  --border: rgba(0,0,0,0.08);
+  --border-strong: rgba(0,0,0,0.18);
+  --text: #1a1814;
+  --text2: #5a5650;
+  --text3: #9a9690;
+  --accent: #1D9E75;
+  --accent-light: #E1F5EE;
+  --amber: #BA7517;
+  --amber-light: #FAEEDA;
+  --coral: #993C1D;
+  --coral-light: #FAECE7;
+
+  --phase1: #E1F5EE; --phase1t: #085041;
+  --phase2: #FAEEDA; --phase2t: #633806;
+  --phase3: #F5C4B3; --phase3t: #712B13;
+  --phase4: #CECBF6; --phase4t: #3C3489;
+  --phase5: #D3D1C7; --phase5t: #444441;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-weight: 300;
+}
+
+/* ── HEADER ── */
+header {
+  padding: 40px 48px 32px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.header-left {}
+.header-logo {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.header-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.header-sub {
+  font-size: 13px;
+  color: var(--text2);
+  font-weight: 300;
+  line-height: 1.6;
+}
+.header-meta {
+  text-align: right;
+}
+.meta-date {
+  font-size: 11px;
+  color: var(--text3);
+  margin-bottom: 6px;
+  letter-spacing: 0.06em;
+}
+.meta-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border-strong);
+  color: var(--text2);
+}
+.meta-status::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--amber);
+}
+
+/* ── LEGEND ── */
+.legend-bar {
+  padding: 14px 48px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.legend-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text3);
+  letter-spacing: 0.06em;
+  margin-right: 4px;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text2);
+}
+.ldot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.ldot-core { background: var(--accent); }
+.ldot-maybe { background: var(--amber); }
+.ldot-open { background: #ccc; border: 1px solid #aaa; }
+.legend-sep { width: 1px; height: 16px; background: var(--border-strong); }
+
+/* ── MAIN LAYOUT ── */
+.main {
+  display: flex;
+  height: calc(100vh - 160px);
+  min-height: 600px;
+}
+
+/* ── MATRIX PANEL ── */
+.matrix-panel {
+  flex: 1;
+  overflow: auto;
+  padding: 32px 24px 32px 48px;
+}
+
+.matrix-wrap {
+  min-width: 700px;
+}
+
+.matrix-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Phase headers */
+.ph-corner {
+  width: 160px;
+  padding: 0;
+  vertical-align: bottom;
+}
+.ph-corner-inner {
+  padding: 10px 14px 12px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text3);
+  text-align: right;
+  border-right: 1.5px solid var(--border-strong);
+  border-bottom: 1.5px solid var(--border-strong);
+}
+
+.ph-cell {
+  padding: 0;
+  width: 140px;
+  text-align: center;
+  vertical-align: bottom;
+  border-left: 1px solid var(--border);
+}
+.ph-cell-inner {
+  padding: 14px 10px 12px;
+  border-bottom: 1.5px solid var(--border-strong);
+}
+.ph-num {
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+  font-weight: 300;
+}
+.ph-name {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 5px;
+  line-height: 1.3;
+}
+.ph-badge {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 400;
+}
+
+/* Row label */
+.row-label-cell {
+  padding: 0;
+  vertical-align: middle;
+  border-right: 1.5px solid var(--border-strong);
+  border-top: 1px solid var(--border);
+}
+.row-label-inner {
+  padding: 14px 14px;
+}
+.row-name {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 4px;
+  line-height: 1.35;
+}
+.row-sub {
+  font-size: 10px;
+  color: var(--text3);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* Matrix cell */
+.m-cell {
+  padding: 10px 12px;
+  vertical-align: top;
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.18s;
+  min-height: 76px;
+}
+.m-cell:hover { background: var(--surface); }
+.m-cell.active { background: var(--surface); outline: 2px solid var(--accent); outline-offset: -2px; }
+
+.m-cell-inner { display: flex; flex-direction: column; gap: 5px; min-height: 60px; }
+.m-sig {
+  display: flex; align-items: flex-start; gap: 6px;
+}
+.sig-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 2px;
+}
+.sig-core { background: var(--accent); }
+.sig-maybe { background: var(--amber); }
+.sig-open { background: #ccc; border: 1px solid #aaa; }
+.m-title {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.4;
+}
+.m-note {
+  font-size: 10px;
+  color: var(--text2);
+  line-height: 1.4;
+  font-weight: 300;
+}
+.m-open-tag {
+  font-size: 10px;
+  color: var(--text3);
+  font-style: italic;
+  line-height: 1.5;
+  padding-top: 4px;
+}
+
+/* ── DETAIL PANEL ── */
+.detail-panel {
+  width: 340px;
+  flex-shrink: 0;
+  border-left: 1px solid var(--border-strong);
+  background: var(--surface);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.detail-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 32px;
+  text-align: center;
+}
+.detail-empty-icon {
+  font-size: 32px;
+  color: var(--border-strong);
+  margin-bottom: 14px;
+  font-family: serif;
+}
+.detail-empty-text {
+  font-size: 13px;
+  color: var(--text3);
+  line-height: 1.7;
+  font-weight: 300;
+}
+.detail-content { display: none; flex-direction: column; height: 100%; }
+.detail-content.visible { display: flex; }
+
+.detail-header {
+  padding: 24px 28px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.detail-tags {
+  display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px;
+}
+.d-phase-tag {
+  font-size: 10px; font-weight: 500;
+  padding: 3px 8px; border-radius: 10px;
+  letter-spacing: 0.04em;
+}
+.d-func-tag {
+  font-size: 10px;
+  padding: 3px 8px; border-radius: 10px;
+  background: var(--surface2);
+  color: var(--text2);
+}
+.d-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+  margin-bottom: 8px;
+}
+.d-body {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+.detail-sections {
+  padding: 20px 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.d-section-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--text3);
+  margin-bottom: 8px;
+}
+.d-block {
+  background: var(--surface2);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+.d-block-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text3);
+  letter-spacing: 0.06em;
+  margin-bottom: 5px;
+}
+.d-block-text {
+  font-size: 12px;
+  color: var(--text);
+  line-height: 1.6;
+  font-weight: 300;
+}
+.d-status-row {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11px; color: var(--text2);
+}
+.d-status-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+.detail-footer {
+  padding: 16px 28px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.d-note {
+  font-size: 11px;
+  color: var(--text3);
+  font-weight: 300;
+  line-height: 1.55;
+  border-left: 2px solid var(--border-strong);
+  padding-left: 10px;
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 14px 48px;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text3);
+  font-weight: 300;
+}
+.footer-right {
+  display: flex; gap: 20px; align-items: center;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateX(10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.detail-content.visible { animation: fadeSlide 0.22s ease; }
+
+@media (max-width: 900px) {
+  header { padding: 24px 20px 20px; }
+  .legend-bar { padding: 12px 20px; }
+  .main { flex-direction: column; height: auto; }
+  .matrix-panel { padding: 20px; }
+  .detail-panel { width: 100%; border-left: none; border-top: 1px solid var(--border-strong); min-height: 300px; }
+  .matrix-wrap { min-width: 560px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <div class="header-logo">Fudi × Sustainable Packaging</div>
+    <div class="header-title">去塑包裝設計矩陣<br>防災情境研究框架</div>
+    <div class="header-sub">以問題情境為導向的富迪紙構功能對應研究 · 前置討論版</div>
+  </div>
+  <div class="header-meta">
+    <div class="meta-date">2026 · 框架假設版</div>
+    <div class="meta-status">內容待客戶 input 持續補充</div>
+  </div>
+</header>
+
+<div class="legend-bar">
+  <span class="legend-label">格子說明</span>
+  <div class="legend-item"><div class="ldot ldot-core"></div>核心對應 — 現有方案可直接回應</div>
+  <div class="legend-sep"></div>
+  <div class="legend-item"><div class="ldot ldot-maybe"></div>潛在機會 — 需研發或訪談確認</div>
+  <div class="legend-sep"></div>
+  <div class="legend-item"><div class="ldot ldot-open"></div>待填入 — 需客戶 input 補充</div>
+</div>
+
+<div class="main">
+  <div class="matrix-panel">
+    <div class="matrix-wrap">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th class="ph-corner"><div class="ph-corner-inner">功能 ↓ &nbsp; 情境 →</div></th>
+            <th class="ph-cell">
+              <div class="ph-cell-inner">
+                <div class="ph-num">階段 01</div>
+                <div class="ph-name">備災期</div>
+                <div class="ph-badge" style="background:var(--phase1);color:var(--phase1t)">平時 → 災前 24h</div>
+              </div>
+            </th>
+            <th class="ph-cell">
+              <div class="ph-cell-inner">
+                <div class="ph-num">階段 02</div>
+                <div class="ph-name">黃金 72 小時</div>
+                <div class="ph-badge" style="background:var(--phase2);color:var(--phase2t)">災後 0 → 72h</div>
+              </div>
+            </th>
+            <th class="ph-cell">
+              <div class="ph-cell-inner">
+                <div class="ph-num">階段 03</div>
+                <div class="ph-name">過渡安置期</div>
+                <div class="ph-badge" style="background:var(--phase3);color:var(--phase3t)">災後 3 → 30 天</div>
+              </div>
+            </th>
+            <th class="ph-cell">
+              <div class="ph-cell-inner">
+                <div class="ph-num">階段 04</div>
+                <div class="ph-name">復原期</div>
+                <div class="ph-badge" style="background:var(--phase4);color:var(--phase4t)">災後 1 → 6 月</div>
+              </div>
+            </th>
+            <th class="ph-cell">
+              <div class="ph-cell-inner">
+                <div class="ph-num">階段 05</div>
+                <div class="ph-name">回收循環</div>
+                <div class="ph-badge" style="background:var(--phase5);color:var(--phase5t)">災後重建</div>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody id="matrix-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="detail-panel" id="detail-panel">
+    <div class="detail-empty" id="detail-empty">
+      <div class="detail-empty-icon">矩</div>
+      <div class="detail-empty-text">點擊任一格<br>查看情境說明與<br>訪談討論起點</div>
+    </div>
+    <div class="detail-content" id="detail-content">
+      <div class="detail-header">
+        <div class="detail-tags" id="d-tags"></div>
+        <div class="d-title" id="d-title"></div>
+        <div class="d-body" id="d-body"></div>
+      </div>
+      <div class="detail-sections">
+        <div>
+          <div class="d-section-label">訪談問題</div>
+          <div class="d-block"><div class="d-block-label">問題</div><div class="d-block-text" id="d-q1"></div></div>
+        </div>
+        <div>
+          <div class="d-section-label">研發討論起點</div>
+          <div class="d-block"><div class="d-block-label">方向</div><div class="d-block-text" id="d-q2"></div></div>
+        </div>
+        <div class="d-status-row">
+          <div class="d-status-dot" id="d-sdot"></div>
+          <span id="d-slabel"></span>
+        </div>
+      </div>
+      <div class="detail-footer">
+        <div class="d-note" id="d-note"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>富迪去塑包裝研發矩陣 · 防災情境框架 · 前置討論版</span>
+  <div class="footer-right">
+    <span>5 防災階段 × 5 功能維度 · 共 25 個交叉情境</span>
+    <span>2026.05</span>
+  </div>
+</footer>
+
+<script>
+const phases = [
+  { name:'備災期', color:'var(--phase1)', tcolor:'var(--phase1t)' },
+  { name:'黃金 72 小時', color:'var(--phase2)', tcolor:'var(--phase2t)' },
+  { name:'過渡安置期', color:'var(--phase3)', tcolor:'var(--phase3t)' },
+  { name:'復原期', color:'var(--phase4)', tcolor:'var(--phase4t)' },
+  { name:'回收循環', color:'var(--phase5)', tcolor:'var(--phase5t)' },
+];
+
+const rows = [
+  {
+    name:'結構保護力',
+    sub:'耐壓、防撞、乘載\n不規則外力',
+    cells:[
+      { status:'core', title:'長期倉儲堆疊', note:'多層抗壓幾何設計',
+        body:'備災物資需長時間堆疊儲存。富迪紙構的幾何邊框設計可提供高抗壓結構，支撐多層堆疊而不變形。',
+        q1:'倉儲標準抗壓值？堆高層數需求？', q2:'現有堆疊方案 vs 富迪紙構的成本比較',
+        note:'確認政府或NGO備災倉儲的標準規格，作為設計基準。' },
+      { status:'core', title:'緊急搬運防撞', note:'幾何緩衝吸收衝擊',
+        body:'物資在災後交通混亂環境中快速搬運，需要高耐撞包裝。紙漿模塑的幾何緩衝結構可吸收不規則衝擊力。',
+        q1:'典型運輸情境為何？落下高度標準？', q2:'對比 EPE 泡棉的緩衝效能數據',
+        note:'這是富迪紙漿模塑最核心的技術競爭力展示點。' },
+      { status:'maybe', title:'模組化收納', note:'折疊堆疊待確認',
+        body:'安置場所空間有限，包裝需具備模組化收納功能。富迪是否有可堆疊、可折疊的設計？需確認。',
+        q1:'安置空間的標準尺寸為何？', q2:'富迪是否有模組化折疊方案的研發計畫？',
+        note:'此格為假設，需技術端說明現有方案的可延伸性。' },
+      { status:'maybe', title:'修繕物資運輸', note:'中量級保護待開發',
+        body:'復原期大量建材與修繕物資進入，需要中量級的保護包裝。紙構是否適用非精密物資的運輸保護？',
+        q1:'重量與尺寸範圍？', q2:'探索「工業級保護 + 易回收」的差異化定位',
+        note:'可能是從防災情境延伸到一般工業包裝的切入點。' },
+      { status:'open', title:'回收後結構再利用', note:'可行性待評估',
+        body:'使用後的紙構包裝如何被再次利用為結構材料？此點需富迪技術端說明回收後的材料強度是否仍具結構功能。',
+        q1:'回收後纖維的強度保留率？', q2:'循環再製為建材或隔板的可行性',
+        note:'若可行，這是富迪循環主張最有力的實證案例。' },
+    ]
+  },
+  {
+    name:'環境阻隔力',
+    sub:'防潮、耐冷熱\n抗酸鹼、防污染',
+    cells:[
+      { status:'core', title:'長效防潮倉儲', note:'植物基塗層阻隔',
+        body:'備災物資儲放於各種環境條件的倉庫，防潮是基本需求。富迪的植物基塗層技術可提供紙材防水阻隔功能，同時維持可回收性。',
+        q1:'倉儲濕度標準？儲存年限？', q2:'4evergreen 纖維回收率 90% 標準的符合程度',
+        note:'防潮塗層的技術參數需與國際標準對照，強化公信力。' },
+      { status:'core', title:'戶外暴露防護', note:'極端環境阻隔挑戰',
+        body:'災後現場暴露於雨水、泥濘、溫差等極端環境。紙材的阻隔技術是否能承受短期戶外暴露？這是核心技術挑戰。',
+        q1:'最嚴苛的環境測試條件？', q2:'對比傳統 PE 塗層的防護表現',
+        note:'這是去塑說服力最高的技術難關，需要測試數據佐證。' },
+      { status:'core', title:'食品藥品衛生阻隔', note:'食品接觸安全認證',
+        body:'安置期間食品、藥品的衛生包裝需求高。富迪的阻隔塗層是否符合食品接觸安全規範？',
+        q1:'FDA / 食品接觸安全認證？', q2:'從防災物資延伸到食品包裝的市場機會',
+        note:'認證是進入人道援助採購體系的敲門磚。' },
+      { status:'maybe', title:'建材外包防潮', note:'低阻隔需求待評估',
+        body:'木材、石膏板等建材對防潮有需求，但要求低於食品等級。紙構是否適合作為建材的外包裝層？',
+        q1:'建材包裝的防潮等級標準？', q2:'成本效益 vs 傳統 PE 膜包裝',
+        note:'如果成本有競爭力，這是大量需求的市場機會。' },
+      { status:'open', title:'防潮塗層回收分離', note:'技術可行性待確認',
+        body:'帶有防潮塗層的紙材在回收端的處理方式？植物基塗層的碎漿分離技術成熟度如何？',
+        q1:'碎漿機（Hydrapulper）分離塗層的效率？', q2:'比對 4evergreen 指南的技術規範',
+        note:'塗層回收分離率是整個去塑主張能否成立的關鍵數據。' },
+    ]
+  },
+  {
+    name:'模組化與運作效率',
+    sub:'平整收納、易組裝\n快速部署、規格化',
+    cells:[
+      { status:'core', title:'規格化備料管理', note:'標準模組尺寸系列',
+        body:'備災系統需要高度規格化的包裝尺寸，以利倉儲系統管理與快速盤點。富迪的紙構是否有標準模組尺寸系列？',
+        q1:'政府或NGO備災規格標準為何？', q2:'標準化尺寸系列的研發現況',
+        note:'規格化是進入政府採購體系的基本條件。' },
+      { status:'core', title:'快速展開包裝', note:'平整壓縮零工具組裝',
+        body:'緊急救援時間極度壓縮，包裝必須能被非專業人員快速組裝。平整壓縮包裝 + 直覺組裝設計是關鍵。',
+        q1:'組裝步驟數上限？無工具組裝設計？', q2:'富迪是否有「零秒展開」設計案例？',
+        note:'這個功能若有實際案例，是極具說服力的展示素材。' },
+      { status:'maybe', title:'多次開啟再利用', note:'耐用度待測試確認',
+        body:'安置期間物資頻繁調配，包裝需支援多次開啟、重新封裝。紙構的耐用度能否支撐反覆使用？',
+        q1:'多次開啟的耐用度測試標準？', q2:'對比單次使用包裝的循環使用可行性',
+        note:'反覆使用設計和回收主張之間需要找到平衡點。' },
+      { status:'maybe', title:'二次包裝彈性', note:'物資轉移容器設計',
+        body:'復原期物資需要在不同地點間轉移，包裝需要具備「二次包裝」功能或易於轉換容器。',
+        q1:'復原期物資流轉的典型情境？', q2:'可轉換容器設計的研發方向探索',
+        note:'此格概念較新，需要與業務端確認是否有實際客戶需求。' },
+      { status:'core', title:'快速壓平回收', note:'最小體積回收物流',
+        body:'使用完畢的包裝能否快速壓平，以最小體積進入回收流程？模組化設計對回收端的物流效率影響。',
+        q1:'回收壓縮比率標準？', q2:'平整收納設計對回收物流成本的影響試算',
+        note:'壓縮比率是可以量化的差異化數據，值得重點發展。' },
+    ]
+  },
+  {
+    name:'感知與使用體驗',
+    sub:'視覺辨識、直覺操作\n災民感知修復',
+    cells:[
+      { status:'maybe', title:'備災品牌信任感', note:'觸感與視覺安心設計',
+        body:'備災包裝的視覺設計能否強化使用者的備災行動意願？紙質觸感是否傳遞安心與信任感？',
+        q1:'消費者對備災包裝的視覺期待為何？', q2:'備災包裝的感知設計研究文獻',
+        note:'這是一個未被充分開發的設計議題，可作為差異化研究方向。' },
+      { status:'core', title:'緊急辨識介面', note:'圖示色彩直覺操作',
+        body:'在混亂的災後現場，包裝的視覺辨識（顏色、圖示、文字）需要讓非專業人員立即判斷內容物與使用方式。',
+        q1:'國際救援包裝的視覺標準（如ISO）？', q2:'富迪在包裝視覺設計的現有能力盤點',
+        note:'需確認富迪目前是否有專屬的視覺設計能力，或需要外部合作。' },
+      { status:'core', title:'人道尊嚴感知', note:'紙質溫潤對比塑料',
+        body:'安置期的包裝不應強化「救濟物資」的stigma。紙質的溫潤質感相比塑料更能傳達人道關懷，是富迪去塑方案最具差異化的情感價值。',
+        q1:'災民對包裝材質的感知研究有哪些？', q2:'人道主義包裝設計的國際案例',
+        note:'這是整個報告情感層次最高的論點，需要研究數據支撐。' },
+      { status:'maybe', title:'社區再製參與感', note:'包裝作為重建材料',
+        body:'復原期的包裝若能帶有「可再製作」屬性（如紙板可作為臨時隔板、書寫面），能強化社區自助感。',
+        q1:'災後社區有哪些再利用需求的研究？', q2:'富迪材料在二次手工使用上的可行性',
+        note:'概念層次高，但實際可行性需要技術端評估。' },
+      { status:'open', title:'回收行為引導設計', note:'可行性待評估',
+        body:'回收過程本身是否能成為一個「感知儀式」？清晰的回收引導設計（顏色標示、撕線設計）能否提升災後的回收參與率？',
+        q1:'災後回收行為研究？', q2:'可視化回收引導設計的提案方向',
+        note:'若有研究支撐，這是一個強力的 ESG 敘事素材。' },
+    ]
+  },
+  {
+    name:'循環與 ESG 加值',
+    sub:'可回收性、可溯源\n碳足跡、再生應用',
+    cells:[
+      { status:'maybe', title:'ESG 採購認證', note:'政府採購門檻符合',
+        body:'政府與企業的備災採購愈來愈要求ESG認證。富迪是否有FSC、ISO 14001等認證，能直接回應採購規範？',
+        q1:'台灣政府備災採購的ESG要求現況？', q2:'富迪現有認證清單與缺口分析',
+        note:'認證缺口的分析可以直接轉化為建議客戶優先投資的方向。' },
+      { status:'open', title:'緊急廢棄物處理', note:'設計挑戰待討論',
+        body:'緊急時期使用後的包裝廢棄物如何快速處理？在混亂環境中，可回收性的「可操作性」是否仍然成立？',
+        q1:'緊急情況下的廢棄物處理規範？', q2:'「緊急可用 + 事後可回收」的設計矛盾如何解決？',
+        note:'這個矛盾若能被設計解決，是一個強力的技術故事。' },
+      { status:'maybe', title:'可溯源物資追蹤', note:'QR code 紙材整合',
+        body:'安置期間物資的流向追蹤需求高。若包裝具備可溯源技術（QR code、RFID友善紙材），可同時解決物資管理與ESG報告需求。',
+        q1:'富迪的可溯源技術成熟度？', q2:'物資管理系統整合的可行性',
+        note:'可溯源技術是B2B客戶的高附加值服務機會。' },
+      { status:'core', title:'碳足跡 LCA 佐證', note:'ESG 報告直接引用',
+        body:'復原期進入正式採購與援助報告階段。富迪去塑方案的碳足跡數據，可直接作為採購方 ESG 報告的佐證材料。',
+        q1:'富迪目前是否有 LCA（生命週期評估）數據？', q2:'對比等量塑料包裝的碳排放差異',
+        note:'LCA 數據是目前 B2B 採購中最具說服力的永續佐證。' },
+      { status:'core', title:'完整閉環方案', note:'富迪差異化最高點',
+        body:'這是整個報告的終點也是富迪差異化的最高點。從備災到回收，富迪能否提供一套完整的「閉環循環包裝方案」，並以具體數據說明？',
+        q1:'富迪目前有無完整閉環案例？', q2:'循環經濟主張的敘事架構設計',
+        note:'若有一個完整的閉環案例，可以成為整個報告的壓軸故事。' },
+    ]
+  },
+];
+
+const statusMeta = {
+  core:  { dot:'#1D9E75', label:'核心對應 — 富迪現有方案可直接回應' },
+  maybe: { dot:'#BA7517', label:'潛在機會 — 需進一步研發或訪談確認' },
+  open:  { dot:'#aaa',    label:'待填入 — 需客戶 input 後補充' },
+};
+
+let activeCell = null;
+
+function buildMatrix() {
+  const tbody = document.getElementById('matrix-body');
+  rows.forEach((row, ri) => {
+    const tr = document.createElement('tr');
+    // row label
+    const th = document.createElement('th');
+    th.className = 'row-label-cell';
+    th.innerHTML = `<div class="row-label-inner"><div class="row-name">${row.name}</div><div class="row-sub">${row.sub.replace(/\n/g,'<br>')}</div></div>`;
+    tr.appendChild(th);
+    row.cells.forEach((cell, ci) => {
+      const td = document.createElement('td');
+      td.className = 'm-cell';
+      td.dataset.ri = ri;
+      td.dataset.ci = ci;
+      if (cell.status === 'open') {
+        td.innerHTML = `<div class="m-cell-inner"><div class="m-open-tag">${cell.title}</div></div>`;
+      } else {
+        const dotClass = cell.status === 'core' ? 'sig-core' : 'sig-maybe';
+        td.innerHTML = `<div class="m-cell-inner"><div class="m-sig"><div class="sig-dot ${dotClass}"></div><div><div class="m-title">${cell.title}</div><div class="m-note">${cell.note}</div></div></div></div>`;
+      }
+      td.addEventListener('click', () => selectCell(td, ri, ci));
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+}
+
+function selectCell(td, ri, ci) {
+  if (activeCell) activeCell.classList.remove('active');
+  td.classList.add('active');
+  activeCell = td;
+
+  const row = rows[ri];
+  const cell = row.cells[ci];
+  const phase = phases[ci];
+  const sm = statusMeta[cell.status];
+
+  document.getElementById('detail-empty').style.display = 'none';
+  const dc = document.getElementById('detail-content');
+  dc.classList.remove('visible');
+  void dc.offsetWidth;
+  dc.classList.add('visible');
+
+  document.getElementById('d-tags').innerHTML =
+    `<span class="d-phase-tag" style="background:${phase.color};color:${phase.tcolor}">${phase.name}</span>` +
+    `<span class="d-func-tag">${row.name}</span>`;
+  document.getElementById('d-title').textContent = cell.title;
+  document.getElementById('d-body').textContent = cell.body;
+  document.getElementById('d-q1').textContent = cell.q1;
+  document.getElementById('d-q2').textContent = cell.q2;
+  document.getElementById('d-sdot').style.background = sm.dot;
+  document.getElementById('d-slabel').textContent = sm.label;
+  document.getElementById('d-note').textContent = cell.note;
+}
+
+buildMatrix();
+</script>
+</body>
+</html>
